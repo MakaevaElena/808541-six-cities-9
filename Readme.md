@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Елена Mакаева](https://up.htmlacademy.ru/react/9/user/808541).
-* Наставник: `Неизвестно`.
+* Наставник: [Артём Рудов](https://htmlacademy.ru/profile/artrudov).
 
 ---
 
