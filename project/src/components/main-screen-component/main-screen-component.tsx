@@ -2,9 +2,10 @@ import PlaceCard from '../place-card-component/place-card-component';
 
 type MainScreenProps = {
   offersCount: number;
+  offersShown: number;
 }
 
-function MainScreen({ offersCount }: MainScreenProps): JSX.Element {
+function MainScreen({ offersCount, offersShown }: MainScreenProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -65,12 +66,9 @@ function MainScreen({ offersCount }: MainScreenProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
+              {
+                Array.from({ length: offersShown }, (a, b) => b).map((id) => <PlaceCard key={id} />)
+              }
 
             </div>
           </section>
