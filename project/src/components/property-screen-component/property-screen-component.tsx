@@ -1,4 +1,4 @@
-import Header from '../header-component/header-component';
+import Header from '../common-components/header-component/header-component';
 
 function PropertyScreen(): JSX.Element {
   return (
