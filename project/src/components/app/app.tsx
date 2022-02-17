@@ -44,7 +44,6 @@ function App({ offersCount, offersShown }: AppScreenProps): JSX.Element {
           element={<NotFoundScreen />}
         />
 
-        {/* <MainScreen offersCount={offersCount} offersShown={offersShown} /> */}
       </Routes>
     </BrowserRouter>
   );

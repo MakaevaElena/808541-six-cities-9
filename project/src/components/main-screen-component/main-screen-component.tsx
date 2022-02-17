@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Header from '../common-components/header-component/header-component';
 

@@ -8,7 +8,7 @@ function PlaceCard(): JSX.Element {
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.Favorites}>
+        <Link to={AppRoute.Room}>
           <img
             className="place-card__image"
             src="img/apartment-01.jpg"
@@ -38,7 +38,7 @@ function PlaceCard(): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Favorites}>Beautiful &amp; luxurious apartment at great location</Link>
+          <Link to={AppRoute.Room}>Beautiful &amp; luxurious apartment at great location</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
