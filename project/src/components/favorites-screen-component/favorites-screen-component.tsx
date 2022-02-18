@@ -1,4 +1,5 @@
-import Header from '../header-component/header-component';
+// import {Link} from 'react-router-dom';
+import Header from '../common-components/header-component/header-component';
 
 function FavoritesScreen(): JSX.Element {
   return (
