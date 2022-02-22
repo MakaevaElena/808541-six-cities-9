@@ -6,7 +6,7 @@ import FavoritesScreen from '../favorites-screen-component/favorites-screen-comp
 import LoginScreen from '../login-screen-component/login-screen-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import PropertyScreen from '../property-screen-component/property-screen-component';
-import PrivateRoute from '../pritvate-route/private-route';
+import PrivateRoute from '../private-route/private-route';
 
 type AppScreenProps = {
   offersCount: number;
