@@ -1,6 +1,6 @@
-import { HotelType } from '../types/hotel-type';
+import { OfferType } from '../types/offer-type';
 
-export const hotels: HotelType[] = [
+export const hotels: OfferType[] = [
   {
     'city': {
       'name': 'Cologne',

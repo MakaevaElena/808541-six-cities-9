@@ -1,6 +1,6 @@
-import { CommentType } from '../types/comment-type';
+import { ReviewType } from '../types/review-type';
 
-export const commets: CommentType[] = [
+export const commets: ReviewType[] = [
   {
     'id': 1,
     'user': {

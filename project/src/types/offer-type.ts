@@ -1,4 +1,4 @@
-export type HotelType =
+export type OfferType =
   {
     bedrooms: number
     city: {

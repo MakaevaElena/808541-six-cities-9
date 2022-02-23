@@ -1,4 +1,4 @@
-export type CommentType =
+export type ReviewType =
   {
     comment: string
     date: string
