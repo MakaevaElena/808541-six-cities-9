@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
+import { OfferType } from '../../../types/offer-type'
 
-function PlaceCard(): JSX.Element {
+type PlaceCardProps = {
+  offer: OfferType;
+}
+
+function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
+  const { isPremium, isFavorite, price, type, title, rating, previewImage, id } = offer;
   return (
     <article className="cities__place-card place-card">
       <div className="place-card__mark">

@@ -4,10 +4,12 @@ import Location from '../common-components/location-component/location-component
 
 type MainScreenProps = {
   offersCount: number;
-  offersShown: number;
+  offers: OfferType[],
+  reviews: ReviewType[],
+  // offersShown: number;
 }
 
-function MainScreen({ offersCount, offersShown }: MainScreenProps): JSX.Element {
+function MainScreen({ offersCount, offers, reviews }: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -38,7 +40,7 @@ function MainScreen({ offersCount, offersShown }: MainScreenProps): JSX.Element 
               </form>
               <div className="cities__places-list places__list tabs__content">
                 {
-                  Array.from({ length: offersShown }, (a, b) => b).map((id) => <PlaceCard key={id} />)
+                  offers.map((offer) => <PlaceCard offer={offer} key={offer.id} />)
                 }
 
               </div>

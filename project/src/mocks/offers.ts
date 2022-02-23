@@ -1,6 +1,6 @@
 import { OfferType } from '../types/offer-type';
 
-export const hotels: OfferType[] = [
+export const offers: OfferType[] = [
   {
     'city': {
       'name': 'Cologne',

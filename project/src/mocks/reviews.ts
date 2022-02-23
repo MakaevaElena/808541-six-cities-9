@@ -1,6 +1,6 @@
 import { ReviewType } from '../types/review-type';
 
-export const commets: ReviewType[] = [
+export const reviews: ReviewType[] = [
   {
     'id': 1,
     'user': {

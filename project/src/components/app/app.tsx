@@ -7,19 +7,27 @@ import LoginScreen from '../login-screen-component/login-screen-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import PropertyScreen from '../property-screen-component/property-screen-component';
 import PrivateRoute from '../private-route/private-route';
+import { OfferType } from '../../types/offer-type';
+import { ReviewType } from '../../types/review-type';
 
 type AppScreenProps = {
   offersCount: number;
-  offersShown: number;
+  // offersShown: number;
+  offers: OfferType[];
+  reviews: ReviewType[];
 }
 
-function App({ offersCount, offersShown }: AppScreenProps): JSX.Element {
+function App({ offersCount, offers, reviews }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen offersCount={offersCount} offersShown={offersShown} />}
+          element={<MainScreen
+            offersCount={offersCount}
+            offers={offers}
+            reviews={reviews}
+          />}
         />
         <Route
           path={AppRoute.SignIn}
@@ -31,7 +39,7 @@ function App({ offersCount, offersShown }: AppScreenProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.NoAuth}
             >
-              <FavoritesScreen />
+              <FavoritesScreen offers={offers} />
             </PrivateRoute>
           }
         />
