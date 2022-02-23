@@ -1,6 +1,8 @@
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Header from '../common-components/header-component/header-component';
 import Location from '../common-components/location-component/location-component';
+import { OfferType } from '../../types/offer-type';
+import { ReviewType } from '../../types/review-type';
 
 type MainScreenProps = {
   offersCount: number;

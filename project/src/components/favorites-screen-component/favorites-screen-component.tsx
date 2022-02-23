@@ -1,5 +1,10 @@
 // import {Link} from 'react-router-dom';
 import Header from '../common-components/header-component/header-component';
+// import { OfferType } from '../../../types/offer-type';
+
+// type FavoritesScreenProps = {
+//   offer: OfferType;
+// }
 
 function FavoritesScreen(): JSX.Element {
   return (
