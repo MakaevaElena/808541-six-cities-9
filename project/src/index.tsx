@@ -6,7 +6,6 @@ import { reviews } from './mocks/reviews';
 
 const Settings = {
   OFFERS_COUNT: 10,
-  // OFFERS_SHOWN: 4,
 };
 
 ReactDOM.render(

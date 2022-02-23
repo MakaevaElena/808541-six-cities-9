@@ -12,7 +12,6 @@ import { ReviewType } from '../../types/review-type';
 
 type AppScreenProps = {
   offersCount: number;
-  // offersShown: number;
   offers: OfferType[];
   reviews: ReviewType[];
 }
@@ -23,11 +22,7 @@ function App({ offersCount, offers, reviews }: AppScreenProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen
-            offersCount={offersCount}
-            offers={offers}
-            reviews={reviews}
-          />}
+          element={<MainScreen offersCount={offersCount} offers={offers} reviews={reviews} />}
         />
         <Route
           path={AppRoute.SignIn}
