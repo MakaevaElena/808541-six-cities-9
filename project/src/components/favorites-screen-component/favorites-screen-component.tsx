@@ -1,8 +1,6 @@
-// import { Link } from 'react-router-dom';
 import Header from '../common-components/header-component/header-component';
 import { OfferType } from '../../types/offer-type';
 import FavoritesList from '../common-components/favorit-list-component/favorite-list-component';
-// import { AppRoute } from '../../const';
 
 type FavoritesScreenProps = {
   offers: OfferType[];

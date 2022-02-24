@@ -5,11 +5,12 @@ import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 
 type PlaceCardProps = {
   offer: OfferType;
+  activeCardId: number;
   onMouseOver: () => void;
   onMouseLeave: () => void;
 }
 
-function PlaceCard({ offer, onMouseOver, onMouseLeave }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, onMouseOver, onMouseLeave, activeCardId }: PlaceCardProps): JSX.Element {
   return (
     <article
       className="cities__place-card place-card"
@@ -51,7 +52,7 @@ function PlaceCard({ offer, onMouseOver, onMouseLeave }: PlaceCardProps): JSX.El
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Room}${offer.id}`}>{offer.title}</Link>
+          <Link to={`${AppRoute.Room}${activeCardId}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>

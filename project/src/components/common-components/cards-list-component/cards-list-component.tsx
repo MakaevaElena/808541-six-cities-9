@@ -8,7 +8,7 @@ type CardsListType = {
 
 function CardsList({ offers }: CardsListType): JSX.Element {
 
-  const [, setActiveCardId] = useState<null | number>(null);
+  const [activeCardId, setActiveCardId] = useState(0);
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -18,7 +18,8 @@ function CardsList({ offers }: CardsListType): JSX.Element {
             offer={offer}
             key={offer.id}
             onMouseOver={() => setActiveCardId(offer.id)}
-            onMouseLeave={() => setActiveCardId(null)}
+            onMouseLeave={() => setActiveCardId(0)}
+            activeCardId={activeCardId}
           />))
       }
     </div>
