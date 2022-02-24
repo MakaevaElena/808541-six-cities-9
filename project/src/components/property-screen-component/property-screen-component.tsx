@@ -2,13 +2,14 @@ import Header from '../common-components/header-component/header-component';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 // import ReviewType from '../../types/review-type';
+import { OfferType } from '../../types/offer-type';
 
-// type PropertyScreenProps = {
-//   offer: OfferType[],
-//   reviews: ReviewType[],
-// }
+type PropertyScreenProps = {
+  offers: OfferType[],
+  // reviews: ReviewType[],
+}
 
-function PropertyScreen(): JSX.Element {
+function PropertyScreen({ offers }: PropertyScreenProps): JSX.Element {
   return (
     <div className="page">
       <Header />
@@ -71,7 +72,7 @@ function PropertyScreen(): JSX.Element {
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;100</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">

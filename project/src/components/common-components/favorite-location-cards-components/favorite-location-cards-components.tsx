@@ -19,11 +19,7 @@ function FavoritesLocationCards({ locationOffers }: FavoriteLocationProps): JSX.
       </div>
       <div className="favorites__places">
         {
-          locationOffers.map((offer) => {
-            const keyValue = `${offer.id}-${offer.city.name}`;
-            return <FavoriteCard key={keyValue} favoriteOffer={offer} />;
-          },
-          )
+          locationOffers.map((offer) => <FavoriteCard key={offer.id} favoriteOffer={offer} />)
         }
       </div>
     </li>

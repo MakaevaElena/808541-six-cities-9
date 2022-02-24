@@ -1,5 +1,6 @@
 import PlaceCard from '../place-card-component/place-card-component';
 import { OfferType } from '../../../types/offer-type';
+import { useState } from 'react';
 
 type CardsListType = {
   offers: OfferType[];
@@ -7,14 +8,19 @@ type CardsListType = {
 
 function CardsList({ offers }: CardsListType): JSX.Element {
 
-  // const [activeCard, setActiveCard] = useState(0);
+  const [, setActiveCardId] = useState<null | number>(null);
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {
-        offers.map((offer) => <PlaceCard offer={offer} key={offer.id} />)
+        offers.map((offer) => (
+          <PlaceCard
+            offer={offer}
+            key={offer.id}
+            onMouseOver={() => setActiveCardId(offer.id)}
+            onMouseLeave={() => setActiveCardId(null)}
+          />))
       }
-
     </div>
   );
 }

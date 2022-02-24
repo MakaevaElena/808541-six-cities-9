@@ -40,8 +40,8 @@ function App({ offersCount, offers, reviews }: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Room}
-          // element={<PropertyScreen offers={offers} />}
-          element={<PropertyScreen />}
+          element={<PropertyScreen offers={offers} />}
+        // element={<PropertyScreen />}
         />
         <Route
           path="*"
