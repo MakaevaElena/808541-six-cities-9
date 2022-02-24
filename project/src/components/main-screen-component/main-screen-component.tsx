@@ -1,17 +1,14 @@
-import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Header from '../common-components/header-component/header-component';
 import Location from '../common-components/location-component/location-component';
 import { OfferType } from '../../types/offer-type';
-import { ReviewType } from '../../types/review-type';
+import CardList from '../common-components/cards-list-component/cards-list-component';
 
 type MainScreenProps = {
   offersCount: number;
   offers: OfferType[],
-  reviews: ReviewType[],
-  // offersShown: number;
 }
 
-function MainScreen({ offersCount, offers, reviews }: MainScreenProps): JSX.Element {
+function MainScreen({ offersCount, offers }: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -40,12 +37,7 @@ function MainScreen({ offersCount, offers, reviews }: MainScreenProps): JSX.Elem
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {
-                  offers.map((offer) => <PlaceCard offer={offer} key={offer.id} />)
-                }
-
-              </div>
+              <CardList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

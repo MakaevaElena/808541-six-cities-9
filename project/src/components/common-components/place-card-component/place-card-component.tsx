@@ -10,7 +10,6 @@ const getRatingWidth = (rating: number): number => Math.round(rating / 5 * 100);
 const capitalizeFirstLetter = (word: string): string => word[0].toUpperCase() + word.slice(1);
 
 function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
-  // const { isPremium, isFavorite, price, type, title, rating, previewImage, id } = offer;
   return (
     <article key={offer.id} className="cities__place-card place-card">
       {offer.isPremium &&

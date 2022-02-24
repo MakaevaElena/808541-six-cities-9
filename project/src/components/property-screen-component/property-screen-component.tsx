@@ -1,4 +1,10 @@
 import Header from '../common-components/header-component/header-component';
+// import ReviewType from '../../types/review-type';
+
+// type PropertyScreenProps = {
+//   offer: OfferType[],
+//   reviews: ReviewType[],
+// }
 
 function PropertyScreen(): JSX.Element {
   return (
