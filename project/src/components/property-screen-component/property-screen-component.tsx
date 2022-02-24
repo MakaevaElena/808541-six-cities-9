@@ -1,4 +1,6 @@
 import Header from '../common-components/header-component/header-component';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
 // import ReviewType from '../../types/review-type';
 
 // type PropertyScreenProps = {
@@ -395,7 +397,7 @@ function PropertyScreen(): JSX.Element {
                     </div>
                   </div>
                   <h2 className="place-card__name">
-                    <a href="/">Nice, cozy, warm big bed apartment</a>
+                    <Link to={AppRoute.Room}>Nice, cozy, warm big bed apartment</Link>
                   </h2>
                   <p className="place-card__type">Apartment</p>
                 </div>
