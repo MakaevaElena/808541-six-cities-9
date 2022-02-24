@@ -6,6 +6,9 @@ type CardsListType = {
 }
 
 function CardsList({ offers }: CardsListType): JSX.Element {
+
+  // const [activeCard, setActiveCard] = useState(0);
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {

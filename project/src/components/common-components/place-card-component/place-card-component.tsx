@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 import { OfferType } from '../../../types/offer-type';
+import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 
 type PlaceCardProps = {
   offer: OfferType;
 }
-
-const getRatingWidth = (rating: number): number => Math.round(rating / 5 * 100);
-const capitalizeFirstLetter = (word: string): string => word[0].toUpperCase() + word.slice(1);
 
 function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
   return (
