@@ -18,7 +18,7 @@ function ReviewForm(): JSX.Element {
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <Rating getRating={getRating} />
+      <Rating getRating={getRating} rating={prevRaving} />
       <textarea
         onChange={getComment}
         className="reviews__textarea form__textarea"

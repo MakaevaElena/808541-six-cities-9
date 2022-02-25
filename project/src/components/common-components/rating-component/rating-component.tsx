@@ -2,9 +2,10 @@ import { ChangeEvent } from 'react';
 
 type RatingProps = {
   getRating: (evt: ChangeEvent<HTMLInputElement>) => void;
+  rating: number;
 }
 
-function Rating({ getRating }: RatingProps): JSX.Element {
+function Rating({ rating, getRating }: RatingProps): JSX.Element {
   return (
     <div className="reviews__rating-form form__rating">
       <input
