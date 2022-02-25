@@ -22,7 +22,7 @@ function PlaceCard({ offer, getOfferId, resetOfferId, activeCardId }: PlaceCardP
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`${AppRoute.Room}=${activeCardId}`}>
+        <Link to={`${AppRoute.Offer}${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -52,7 +52,7 @@ function PlaceCard({ offer, getOfferId, resetOfferId, activeCardId }: PlaceCardP
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Room}=${activeCardId}`}>{offer.title}</Link>
+          <Link to={`${AppRoute.Offer}${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>
