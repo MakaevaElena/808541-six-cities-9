@@ -1,96 +1,31 @@
-
+import { ChangeEvent, useState } from 'react';
+import Rating from '../rating-component/rating-component';
 
 function ReviewForm(): JSX.Element {
+  const [prevComment, setComment] = useState<string>('');
+  const [prevRaving, setRating] = useState<number>(0);
+
+  const getRating = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target;
+    setRating(Number(value));
+  };
+
+  const getComment = (evt: { target: { value: string } }) => {
+    const { value } = evt.target;
+    setComment(value);
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating">
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="5"
-          id="5-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="5-stars"
-          className="reviews__rating-label form__rating-label"
-          title="perfect"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="4"
-          id="4-stars"
-          type="radio"
-        />
-        <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="3"
-          id="3-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="3-stars"
-          className="reviews__rating-label form__rating-label"
-          title="not bad"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="2"
-          id="2-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="2-stars"
-          className="reviews__rating-label form__rating-label"
-          title="badly"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="1"
-          id="1-star"
-          type="radio"
-        />
-        <label
-          htmlFor="1-star"
-          className="reviews__rating-label form__rating-label"
-          title="terribly"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star"></use>
-          </svg>
-        </label>
-      </div>
+      <Rating getRating={getRating} />
       <textarea
+        onChange={getComment}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        value={prevComment}
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -104,7 +39,11 @@ function ReviewForm(): JSX.Element {
             50 characters
           </b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled>Submit</button>
+        <button className="reviews__submit form__submit button"
+          type="submit"
+          disabled={!((prevRaving > 0) && (prevComment.length >= 50))}
+        >Submit
+        </button>
       </div>
     </form>
   );

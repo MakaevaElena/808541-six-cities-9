@@ -17,8 +17,8 @@ function CardsList({ offers }: CardsListType): JSX.Element {
           <PlaceCard
             offer={offer}
             key={offer.id}
-            onMouseOver={() => setActiveCardId(offer.id)}
-            onMouseLeave={() => setActiveCardId(0)}
+            getOfferId={() => setActiveCardId(offer.id)}
+            resetOfferId={() => setActiveCardId(0)}
             activeCardId={activeCardId}
           />))
       }

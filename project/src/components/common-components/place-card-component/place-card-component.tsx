@@ -6,23 +6,23 @@ import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 type PlaceCardProps = {
   offer: OfferType;
   activeCardId: number;
-  onMouseOver: () => void;
-  onMouseLeave: () => void;
+  getOfferId: (id: number) => void;
+  resetOfferId: () => void;
 }
 
-function PlaceCard({ offer, onMouseOver, onMouseLeave, activeCardId }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, getOfferId, resetOfferId, activeCardId }: PlaceCardProps): JSX.Element {
   return (
     <article
       className="cities__place-card place-card"
-      onMouseOver={onMouseOver}
-      onMouseLeave={onMouseLeave}
+      onMouseOver={() => getOfferId(offer.id)}
+      onMouseLeave={() => resetOfferId()}
     >
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.Room}>
+        <Link to={`${AppRoute.Room}=${activeCardId}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -52,7 +52,7 @@ function PlaceCard({ offer, onMouseOver, onMouseLeave, activeCardId }: PlaceCard
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Room}${activeCardId}`}>{offer.title}</Link>
+          <Link to={`${AppRoute.Room}=${activeCardId}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>
