@@ -5,20 +5,21 @@ import { ReviewType } from '../../types/review-type';
 import { OfferType } from '../../types/offer-type';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
-import { useParams } from 'react-router';
+// import { useParams } from 'react-router';
 
 type PropertyScreenProps = {
   offers: OfferType[],
   reviews: ReviewType[],
 }
 
-type ParamsType = {
-  id: string,
-}
+// type ParamsType = {
+//   id: string,
+// }
 
 function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
-  const urlOfferParams: ParamsType = useParams();
-  const currentOffer = offers.find((offer) => offer.id === +urlOfferParams.id);
+  // Хочу получить id через useParams и отрисовать карточку динамически.
+  // const urlOfferParams: ParamsType = useParams();
+  // const currentOffer = offers.find((offer) => offer.id === +urlOfferParams.id);
 
   return (
     <div className="page">
