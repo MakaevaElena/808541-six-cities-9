@@ -1,4 +1,3 @@
-// import { OfferType } from '../../../types/offer-type';
 import { FavoriteType } from '../../../types/favorite-type';
 import FavoriteCard from '../favorite-card-component/favorite-card-component';
 import { Link } from 'react-router-dom';
@@ -10,6 +9,7 @@ type FavoriteLocationProps = {
 }
 
 function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps): JSX.Element {
+  // console.log('@>>>', locationOffers);
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
