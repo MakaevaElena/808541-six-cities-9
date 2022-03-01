@@ -61,7 +61,7 @@ export const favorites: FavoriteType[] = [{
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 1,
+  'id': 2,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -101,7 +101,7 @@ export const favorites: FavoriteType[] = [{
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 1,
+  'id': 3,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -141,7 +141,7 @@ export const favorites: FavoriteType[] = [{
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 1,
+  'id': 4,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -181,7 +181,7 @@ export const favorites: FavoriteType[] = [{
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 1,
+  'id': 5,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
