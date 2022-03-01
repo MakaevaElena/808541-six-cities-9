@@ -1,5 +1,6 @@
 import { OfferType } from '../../../types/offer-type';
 import FavoritesLocationCards from '../favorite-location-cards-components/favorite-location-cards-components';
+// import { CITIES } from '../../../const';
 
 type FavoriteListProps = {
   offers: OfferType[]
@@ -14,10 +15,12 @@ function FavoritesList({ offers }: FavoriteListProps): JSX.Element {
     <section className="favorites">
       <h1 className="favorites__title">Saved listing</h1>
       <ul className="favorites__list">
-        {
-          favoriteCities
-            .map((city) => <FavoritesLocationCards key={city} locationOffers={favoriteOffers.filter((favorite) => (favorite.city.name === city))} />)
-        }
+        {favoriteCities.map((city) => (
+          <FavoritesLocationCards
+            key={city}
+            locationOffers={favoriteOffers.filter((favorite) => (favorite.city.name === city))}
+          />
+        ))}
       </ul>
     </section>
   );

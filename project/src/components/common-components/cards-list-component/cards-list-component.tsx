@@ -7,7 +7,6 @@ type CardsListType = {
 }
 
 function CardsList({ offers }: CardsListType): JSX.Element {
-
   const [activeCardId, setActiveCardId] = useState(0);
 
   return (

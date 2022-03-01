@@ -252,7 +252,9 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
           </main>
         </div >
       )}
-      < NotFoundScreen />
+      {!currentOffer && (
+        < NotFoundScreen />
+      )}
     </>
   );
 }

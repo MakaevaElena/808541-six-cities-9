@@ -10,10 +10,10 @@ type FavoriteCardProps = {
 function FavoriteCard({ favoriteOffer }: FavoriteCardProps): JSX.Element {
   return (
     <article className="favorites__card place-card">
-      {favoriteOffer.isPremium &&
+      {favoriteOffer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
-        </div>}
+        </div>)}
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}${favoriteOffer.id}`}>
           <img className="place-card__image" src={favoriteOffer.previewImage} width="150" height="110" alt="Place" />
