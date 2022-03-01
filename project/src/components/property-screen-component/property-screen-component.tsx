@@ -1,7 +1,5 @@
 import Header from '../common-components/header-component/header-component';
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { AppRoute } from '../../const';
 import { ReviewType } from '../../types/review-type';
 import { OfferType } from '../../types/offer-type';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
@@ -9,7 +7,6 @@ import ReviewForm from '../common-components/review-form-component/review-form-c
 import { useParams } from 'react-router';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import { getRatingWidth } from '../../utils';
-// import NearPlaceCard from '../common-components/place-card-component/near-place-card-component';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 
 type PropertyScreenProps = {

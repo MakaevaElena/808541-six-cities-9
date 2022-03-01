@@ -1,7 +1,5 @@
-// import { OfferType } from '../../../types/offer-type';
 import FavoritesLocationCards from '../favorite-location-cards-components/favorite-location-cards-components';
 import { FavoriteType } from '../../../types/favorite-type';
-// import { CITIES } from '../../../const';
 
 type FavoriteListProps = {
   favorites: FavoriteType[];

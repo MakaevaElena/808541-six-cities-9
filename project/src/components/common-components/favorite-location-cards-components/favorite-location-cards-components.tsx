@@ -9,7 +9,6 @@ type FavoriteLocationProps = {
 }
 
 function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps): JSX.Element {
-  // console.log('@>>>', locationOffers);
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">

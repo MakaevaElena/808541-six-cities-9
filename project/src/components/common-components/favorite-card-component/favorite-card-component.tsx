@@ -1,4 +1,3 @@
-// import { OfferType } from '../../../types/offer-type';
 import { FavoriteType } from '../../../types/favorite-type';
 import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 import { Link } from 'react-router-dom';
