@@ -1,30 +1,29 @@
-import { OfferType } from '../../../types/offer-type';
+// import { OfferType } from '../../../types/offer-type';
+import { FavoriteType } from '../../../types/favorite-type';
 import FavoriteCard from '../favorite-card-component/favorite-card-component';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
 
 type FavoriteLocationProps = {
-  locationOffers: OfferType[],
+  locationOffers: FavoriteType[],
+  city: string;
 }
 
-function FavoritesLocationCards({ locationOffers }: FavoriteLocationProps): JSX.Element {
+function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps): JSX.Element {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
           <Link className="locations__item-link" to={AppRoute.Main}>
-            <span>{locationOffers[0].city.name}</span>
+            <span>{city}</span>
           </Link>
         </div>
       </div>
       <div className="favorites__places">
-        {
-          locationOffers.map((offer) => {
-            const keyValue = `${offer.id}-${offer.city.name}`;
-            return <FavoriteCard key={keyValue} favoriteOffer={offer} />;
-          },
-          )
-        }
+        {locationOffers.map((offer) => {
+          const key = `${offer.id}`;
+          return <FavoriteCard key={key} favoriteOffer={offer} />;
+        })}
       </div>
     </li>
   );

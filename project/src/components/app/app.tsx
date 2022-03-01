@@ -9,14 +9,16 @@ import PropertyScreen from '../property-screen-component/property-screen-compone
 import PrivateRoute from '../private-route/private-route';
 import { OfferType } from '../../types/offer-type';
 import { ReviewType } from '../../types/review-type';
+import { FavoriteType } from '../../types/favorite-type';
 
 type AppScreenProps = {
   offersCount: number;
   offers: OfferType[];
   reviews: ReviewType[];
+  favorites: FavoriteType[];
 }
 
-function App({ offersCount, offers, reviews }: AppScreenProps): JSX.Element {
+function App({ offersCount, offers, reviews, favorites }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -34,7 +36,7 @@ function App({ offersCount, offers, reviews }: AppScreenProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              <FavoritesScreen offers={offers} />
+              <FavoritesScreen favorites={favorites} />
             </PrivateRoute>
           }
         />
