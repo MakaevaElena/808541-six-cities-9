@@ -4,9 +4,11 @@ type LocationType = {
   zoom: number
 }
 
+type CityName = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
+
 type CityType = {
   location: LocationType
-  name: string
+  name: CityName;
 }
 
 type HostType = {
