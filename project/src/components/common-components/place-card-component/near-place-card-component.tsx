@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../../const';
+import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 import { OfferType } from '../../../types/offer-type';
 
 type NearPlaceCardProps = {
@@ -8,20 +11,20 @@ function NearPlaceCard({ offer }: NearPlaceCardProps): JSX.Element {
   return (
     < article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">
-        <a href="/">
+        <Link to={`${AppRoute.Offer}${offer.id}`}>
           <img
             className="place-card__image"
-            src="img/room.jpg"
+            src={offer.previewImage}
             width="260"
             height="200"
             alt="Place"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;100</b>
+            <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
@@ -36,14 +39,14 @@ function NearPlaceCard({ offer }: NearPlaceCardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
+            <span style={{ width: `${getRatingWidth(offer.rating)}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">Wood and stone place</a>
+          <Link to={`${AppRoute.Offer}${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">Private room</p>
+        <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>
     </article>
   );
