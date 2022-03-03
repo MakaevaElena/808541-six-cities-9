@@ -20,7 +20,7 @@ function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps)
       </div>
       <div className="favorites__places">
         {locationOffers.map((offer) => {
-          const key = `${offer.id}-${city}`;
+          const key = `${offer.id}`;
           return <FavoriteCard key={key} favoriteOffer={offer} />;
         })}
       </div>

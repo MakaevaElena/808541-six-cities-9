@@ -1,11 +1,12 @@
-import 'leaflet/dist/leaflet.css';
-import { Icon, Marker } from 'leaflet';
-import useMap from '../../../hooks/useMap';
+import { Icon } from 'leaflet';
+import useMap from '../../../hooks/use-map';
 import { useEffect, useRef } from 'react';
 import { CityType, OfferType } from '../../../types/offer-type';
+import leaflet from 'leaflet';
 
 import defaultPin from './/img/pin.svg';
 import activePin from './/img/pin-active.svg';
+import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
   city: CityType;
@@ -32,17 +33,25 @@ function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
   useEffect(() => {
     if (map) {
       offers.forEach((offer) => {
-        const marker = new Marker({
-          lat: offer.city.location.latitude,
-          lng: offer.city.location.longitude,
-        });
-
-        marker.setIcon(selectedOffer && offer.id === selectedOffer ? activeIconPin : defaultIconPin).addTo(map);
+        leaflet
+          .marker({
+            lat: offer.city.location.latitude,
+            lng: offer.city.location.longitude,
+          }, {
+            icon: (offer.id === selectedOffer)
+              ? activeIconPin
+              : defaultIconPin,
+          })
+          .addTo(map);
       });
+
+      // marker.setIcon(offer.id === selectedOffer ? activeIconPin : defaultIconPin)
+      //   .addTo(map);
+      // });
     }
   }, [map, offers, selectedOffer]);
 
-  return <div style={{ height: '100%' }} ref={mapRef}></div>;
+  return <section style={{ height: '100%' }} ref={mapRef}></section>;
 }
 
 export default Map;

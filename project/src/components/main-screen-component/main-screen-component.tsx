@@ -47,7 +47,6 @@ function MainScreen({ offersCount, offers }: MainScreenProps): JSX.Element {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-
                 <Map city={offers[0].city} offers={offers} selectedOffer={selectedOfferId} />
               </section>
 

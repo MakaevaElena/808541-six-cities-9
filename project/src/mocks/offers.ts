@@ -3,6 +3,61 @@ import { OfferType } from '../types/offer-type';
 export const offers: OfferType[] = [
   {
     'city': {
+      'name': 'Amsterdam',
+      'location': {
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
+        'zoom': 10,
+      },
+    },
+    'previewImage': 'https://9.react.pages.academy/static/hotel/9.jpg',
+    'images': [
+      'https://9.react.pages.academy/static/hotel/17.jpg',
+      'https://9.react.pages.academy/static/hotel/20.jpg',
+      'https://9.react.pages.academy/static/hotel/6.jpg',
+      'https://9.react.pages.academy/static/hotel/15.jpg',
+      'https://9.react.pages.academy/static/hotel/2.jpg',
+      'https://9.react.pages.academy/static/hotel/11.jpg',
+      'https://9.react.pages.academy/static/hotel/13.jpg',
+      'https://9.react.pages.academy/static/hotel/19.jpg',
+      'https://9.react.pages.academy/static/hotel/1.jpg',
+      'https://9.react.pages.academy/static/hotel/7.jpg',
+      'https://9.react.pages.academy/static/hotel/8.jpg',
+      'https://9.react.pages.academy/static/hotel/14.jpg',
+      'https://9.react.pages.academy/static/hotel/4.jpg',
+      'https://9.react.pages.academy/static/hotel/12.jpg',
+    ],
+    'title': 'Waterfront with extraordinary view',
+    'isFavorite': false,
+    'isPremium': false,
+    'rating': 4.5,
+    'type': 'room',
+    'bedrooms': 1,
+    'maxAdults': 1,
+    'price': 224,
+    'goods': [
+      'Laptop friendly workspace',
+      'Breakfast',
+      'Baby seat',
+      'Air conditioning',
+      'Washer',
+    ],
+    'host': {
+      'id': 25,
+      'name': 'Angelina',
+      'isPro': true,
+      'avatarUrl': 'img/avatar-angelina.jpg',
+    },
+    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
+    'location': {
+      'latitude': 52.37154,
+      'longitude': 4.889976,
+      'zoom': 16,
+    },
+    'id': 5,
+  },
+  {
+    'city': {
       'name': 'Cologne',
       'location': {
         'latitude': 50.938361,
@@ -225,61 +280,6 @@ export const offers: OfferType[] = [
       'zoom': 16,
     },
     'id': 4,
-  },
-  {
-    'city': {
-      'name': 'Amsterdam',
-      'location': {
-        'latitude': 52.37454,
-        'longitude': 4.897976,
-        'zoom': 13,
-      },
-    },
-    'previewImage': 'https://9.react.pages.academy/static/hotel/9.jpg',
-    'images': [
-      'https://9.react.pages.academy/static/hotel/17.jpg',
-      'https://9.react.pages.academy/static/hotel/20.jpg',
-      'https://9.react.pages.academy/static/hotel/6.jpg',
-      'https://9.react.pages.academy/static/hotel/15.jpg',
-      'https://9.react.pages.academy/static/hotel/2.jpg',
-      'https://9.react.pages.academy/static/hotel/11.jpg',
-      'https://9.react.pages.academy/static/hotel/13.jpg',
-      'https://9.react.pages.academy/static/hotel/19.jpg',
-      'https://9.react.pages.academy/static/hotel/1.jpg',
-      'https://9.react.pages.academy/static/hotel/7.jpg',
-      'https://9.react.pages.academy/static/hotel/8.jpg',
-      'https://9.react.pages.academy/static/hotel/14.jpg',
-      'https://9.react.pages.academy/static/hotel/4.jpg',
-      'https://9.react.pages.academy/static/hotel/12.jpg',
-    ],
-    'title': 'Waterfront with extraordinary view',
-    'isFavorite': false,
-    'isPremium': false,
-    'rating': 4.5,
-    'type': 'room',
-    'bedrooms': 1,
-    'maxAdults': 1,
-    'price': 224,
-    'goods': [
-      'Laptop friendly workspace',
-      'Breakfast',
-      'Baby seat',
-      'Air conditioning',
-      'Washer',
-    ],
-    'host': {
-      'id': 25,
-      'name': 'Angelina',
-      'isPro': true,
-      'avatarUrl': 'img/avatar-angelina.jpg',
-    },
-    'description': 'A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.',
-    'location': {
-      'latitude': 52.37154,
-      'longitude': 4.889976,
-      'zoom': 16,
-    },
-    'id': 5,
   },
   {
     'city': {
@@ -1970,8 +1970,8 @@ export const offers: OfferType[] = [
     'city': {
       'name': 'Amsterdam',
       'location': {
-        'latitude': 52.37454,
-        'longitude': 4.897976,
+        'latitude': 52.369553943508,
+        'longitude': 4.85309666406198,
         'zoom': 13,
       },
     },
@@ -2136,8 +2136,8 @@ export const offers: OfferType[] = [
     'city': {
       'name': 'Amsterdam',
       'location': {
-        'latitude': 52.37454,
-        'longitude': 4.897976,
+        'latitude': 52.3909553943508,
+        'longitude': 4.929309666406198,
         'zoom': 13,
       },
     },
@@ -2417,8 +2417,8 @@ export const offers: OfferType[] = [
     'city': {
       'name': 'Amsterdam',
       'location': {
-        'latitude': 52.37454,
-        'longitude': 4.897976,
+        'latitude': 52.3809553943508,
+        'longitude': 4.939309666406198,
         'zoom': 13,
       },
     },
