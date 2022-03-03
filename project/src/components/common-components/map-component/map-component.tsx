@@ -1,11 +1,11 @@
 import 'leaflet/dist/leaflet.css';
 import { Icon, Marker } from 'leaflet';
-import useMap from '../../hooks/useMap';
+import useMap from '../../../hooks/useMap';
 import { useEffect, useRef } from 'react';
-import { CityType, OfferType } from '../../types/offer-type';
+import { CityType, OfferType } from '../../../types/offer-type';
 
-import defaultPin from './img/pin.svg';
-import activePin from './img/pin-active.svg';
+import defaultPin from './/img/pin.svg';
+import activePin from './/img/pin-active.svg';
 
 type MapProps = {
   city: CityType;
@@ -15,14 +15,14 @@ type MapProps = {
 
 const defaultIconPin = new Icon({
   iconUrl: defaultPin,
-  iconSize: [28, 40],
-  iconAnchor: [14, 20],
+  iconSize: [30, 40],
+  iconAnchor: [15, 40],
 });
 
 const activeIconPin = new Icon({
   iconUrl: activePin,
-  iconSize: [28, 40],
-  iconAnchor: [14, 20],
+  iconSize: [30, 40],
+  iconAnchor: [15, 40],
 });
 
 function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
