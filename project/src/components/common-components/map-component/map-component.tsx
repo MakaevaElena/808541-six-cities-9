@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import { CityType, OfferType } from '../../../types/offer-type';
 import leaflet from 'leaflet';
 
-import defaultPin from './/img/pin.svg';
-import activePin from './/img/pin-active.svg';
+import defaultPin from './img/pin.svg';
+import activePin from './img/pin-active.svg';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
@@ -14,17 +14,14 @@ type MapProps = {
   selectedOffer: number | null;
 }
 
-const defaultIconPin = new Icon({
-  iconUrl: defaultPin,
+const getIcon = (url: string) => new Icon({
+  iconUrl: url,
   iconSize: [30, 40],
   iconAnchor: [15, 40],
 });
 
-const activeIconPin = new Icon({
-  iconUrl: activePin,
-  iconSize: [30, 40],
-  iconAnchor: [15, 40],
-});
+const defaultIconPin = getIcon(defaultPin);
+const activeIconPin = getIcon(activePin);
 
 function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
   const mapRef = useRef(null);
@@ -44,10 +41,6 @@ function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
           })
           .addTo(map);
       });
-
-      // marker.setIcon(offer.id === selectedOffer ? activeIconPin : defaultIconPin)
-      //   .addTo(map);
-      // });
     }
   }, [map, offers, selectedOffer]);
 

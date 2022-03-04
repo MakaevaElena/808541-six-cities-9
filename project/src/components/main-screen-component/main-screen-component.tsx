@@ -14,6 +14,8 @@ function MainScreen({ offersCount, offers }: MainScreenProps): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);
+  // eslint-disable-next-line no-console
+  console.log('@>>>', selectedOfferId);
 
   return (
     <div className="page page--gray page--main">
