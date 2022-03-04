@@ -17,11 +17,11 @@ export const favorites: FavoriteType[] = [{
   ],
   'host': {
     'avatarUrl': '/project/public/img/avatar-angelina.jpg',
-    'id': 100,
+    'id': 3,
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 100,
+  'id': 1,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -57,11 +57,11 @@ export const favorites: FavoriteType[] = [{
   ],
   'host': {
     'avatarUrl': '/project/public/img/avatar-angelina.jpg',
-    'id': 101,
+    'id': 3,
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 101,
+  'id': 2,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -97,11 +97,11 @@ export const favorites: FavoriteType[] = [{
   ],
   'host': {
     'avatarUrl': '/project/public/img/avatar-angelina.jpg',
-    'id': 102,
+    'id': 3,
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 102,
+  'id': 3,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -137,11 +137,11 @@ export const favorites: FavoriteType[] = [{
   ],
   'host': {
     'avatarUrl': '/project/public/img/avatar-angelina.jpg',
-    'id': 103,
+    'id': 3,
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 103,
+  'id': 4,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
@@ -177,11 +177,11 @@ export const favorites: FavoriteType[] = [{
   ],
   'host': {
     'avatarUrl': '/project/public/img/avatar-angelina.jpg',
-    'id': 104,
+    'id': 3,
     'isPro': true,
     'name': 'Angelina',
   },
-  'id': 104,
+  'id': 5,
   'images': [
     '/project/public/img/apartment-01.jpg',
     '/project/public/img/apartment-02.jpg',
