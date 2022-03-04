@@ -6,7 +6,7 @@ type LocationType = {
 
 type CityName = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 
-type CityType = {
+export type CityType = {
   location: LocationType
   name: CityName;
 }
