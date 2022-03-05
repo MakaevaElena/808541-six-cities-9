@@ -9,7 +9,6 @@ type CardsListType = {
 
 function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
   const [activeCardId, setActiveCardId] = useState(0);
-
   const handleCardActive = (valueId: number | null) => onPlaceCardHover(activeCardId);
 
   return (
