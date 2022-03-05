@@ -4,7 +4,7 @@ type LocationType = {
   zoom: number
 }
 
-type CityName = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
+export type CityName = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 
 export type CityType = {
   location: LocationType

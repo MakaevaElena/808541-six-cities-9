@@ -8,6 +8,7 @@ import { useParams } from 'react-router';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import { getRatingWidth } from '../../utils';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
+import Map from '../common-components/map-component/map-component';
 
 type PropertyScreenProps = {
   offers: OfferType[],
@@ -19,6 +20,7 @@ const MAX_COUNT_OF_OFFERS = 3;
 function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
+
   const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
 
   const [activeCardId, setActiveCardId] = useState(0);
@@ -110,24 +112,22 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
                       <span className="property__user-name">
                         {currentOffer.host.name}
                       </span>
-
                       {currentOffer.host.isPro &&
                         <span className="property__user-status">
                           Pro
                         </span>}
-
                     </div>
                     {currentOffer.description}
                   </div>
-
+                  <section className="property__reviews reviews">
+                    <ReviewList reviews={reviews} />
+                    <ReviewForm />
+                  </section>
                 </div>
-                <section className="property__reviews reviews">
-                  <ReviewList reviews={reviews} />
-                  <ReviewForm />
+                <section className="property__map map">
+                  <Map city={currentOffer.city} offers={nearOffers} selectedOffer={null} />
                 </section>
               </div>
-
-              <section className="property__map map"></section>
             </section>
             <div className="container">
               <section className="near-places places">
