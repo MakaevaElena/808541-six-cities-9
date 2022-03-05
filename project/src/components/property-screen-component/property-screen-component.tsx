@@ -20,10 +20,9 @@ const MAX_COUNT_OF_OFFERS = 3;
 function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
-
   const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
-
   const [activeCardId, setActiveCardId] = useState(0);
+  const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
 
   return (
     <>
@@ -136,9 +135,9 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
 
                   {nearOffers.map((nearOffer: OfferType) => (
                     <PlaceCard
-                      key={nearOffer.id}
+                      key={`nearOffer-${nearOffer.id}`}
                       offer={nearOffer}
-                      getOfferId={() => setActiveCardId(nearOffer.id)}
+                      getOfferId={handleCardActive}
                       resetOfferId={() => setActiveCardId(0)}
                       activeCardId={activeCardId}
                     />
