@@ -42,7 +42,7 @@ function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, offers, selectedOffer]);
+  }, [map, offers, selectedOffer, city]);
 
   return <section style={{ height: '100%' }} ref={mapRef}></section>;
 }
