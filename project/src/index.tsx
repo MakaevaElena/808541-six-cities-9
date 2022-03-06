@@ -7,15 +7,14 @@ import { favorites } from './mocks/favorites';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-const Settings = {
-  OFFERS_COUNT: 10,
-};
+// const Settings = {
+//   OFFERS_COUNT: 10,
+// };
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App
-        offersCount={Settings.OFFERS_COUNT}
         offers={offers}
         reviews={reviews}
         favorites={favorites}

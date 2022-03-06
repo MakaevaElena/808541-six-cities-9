@@ -5,7 +5,6 @@ export const getRatingWidth = (rating: number): number => Math.round(rating / MA
 
 export const capitalizeFirstLetter = (word: string): string => word[0].toUpperCase() + word.slice(1);
 
-
 export const getCityOffers = (city: string, offers: OfferType[]) => offers.filter((offer) => offer.city.name.toLowerCase() === city);
 
 export const getFavoriteOffers = (offers: OfferType[]) => offers.filter((offer) => offer.isFavorite);

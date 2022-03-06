@@ -1,18 +1,23 @@
 import Header from '../common-components/header-component/header-component';
-import Location from '../common-components/location-component/location-component';
+import CityList from '../common-components/city-list/city-list';
 import { OfferType } from '../../types/offer-type';
 import CardList from '../common-components/cards-list-component/cards-list-component';
 import { useState } from 'react';
 import Map from '../common-components/map-component/map-component';
+import { useAppSelector } from '../../hooks';
+import { capitalizeFirstLetter, getCityOffers } from '../../utils';
+import { State } from '../../types/state';
 
 type MainScreenProps = {
-  offersCount: number;
+  // offersCount: number;
   offers: OfferType[],
 }
 
-function MainScreen({ offersCount, offers }: MainScreenProps): JSX.Element {
+function MainScreen({ offers }: MainScreenProps): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
+  const city = useAppSelector((state: State) => state.city);
+  const filderedOffers = getCityOffers(city, offers);
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);
 
   return (
@@ -21,13 +26,13 @@ function MainScreen({ offersCount, offers }: MainScreenProps): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <Location />
+          <CityList city={city} />
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{filderedOffers.length} places to stay in {capitalizeFirstLetter(city)}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
