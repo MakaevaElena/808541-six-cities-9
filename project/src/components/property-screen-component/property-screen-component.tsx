@@ -124,7 +124,7 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
                   </section>
                 </div>
                 <section className="property__map map">
-                  <Map city={currentOffer.city} offers={nearOffers} selectedOffer={null} />
+                  <Map currentCity={currentOffer.city} offers={nearOffers} selectedOffer={null} />
                 </section>
               </div>
             </section>

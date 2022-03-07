@@ -16,9 +16,12 @@ type MainScreenProps = {
 function MainScreen({ offers }: MainScreenProps): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
-  const city = useAppSelector((state: State) => state.city);
-  const filderedOffers = getCityOffers(city, offers);
+  const currentCity = useAppSelector((state: State) => state.city);
+  const filderedOffers = getCityOffers(currentCity, offers);
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);
+
+  // eslint-disable-next-line no-console
+  console.log('@>>>', filderedOffers);
 
   return (
     <>
@@ -28,13 +31,13 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
           <main className="page__main page__main--index">
             <h1 className="visually-hidden">Cities</h1>
             <div className="tabs">
-              <CityList city={city} />
+              <CityList city={currentCity} />
             </div>
             <div className="cities">
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{filderedOffers.length} places to stay in {city}</b>
+                  <b className="places__found">{filderedOffers.length} places to stay in {currentCity}</b>
                   <form className="places__sorting" action="#" method="get">
                     <span className="places__sorting-caption">Sort by</span>
                     <span className="places__sorting-type" tabIndex={0}>
@@ -54,7 +57,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
-                    <Map city={filderedOffers[0].city} offers={filderedOffers} selectedOffer={selectedOfferId} />
+                    <Map currentCity={filderedOffers[0].city} offers={filderedOffers} selectedOffer={selectedOfferId} />
                   </section>
                 </div>
               </div>
@@ -64,7 +67,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
       )}
       {
         !filderedOffers && (
-          < EmptyMainScreen city={city} />
+          < EmptyMainScreen city={currentCity} />
         )
       }
     </>
