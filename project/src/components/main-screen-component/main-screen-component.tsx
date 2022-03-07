@@ -21,9 +21,6 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
   const filderedOffers = getCityOffers(currentCity, offers);
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);
 
-  // eslint-disable-next-line no-console
-  // console.log('@>>>', filderedOffers);
-
   return (
     <>
       {(filderedOffers.length > 0) && (

@@ -1,5 +1,3 @@
-// import { sortOffers } from '../../../utils';
-
 function Sorting(): JSX.Element {
   return (
     <form className="places__sorting" action="#" method="get">
