@@ -35,7 +35,7 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
                 <div className="property__gallery">
 
                   {currentOffer.images.map((src) => (
-                    <div className="property__image-wrapper" key={id}>
+                    <div className="property__image-wrapper" key={src}>
                       <img className="property__image" src={src} alt="Shows an incredible place" />
                     </div>
                   ))}
