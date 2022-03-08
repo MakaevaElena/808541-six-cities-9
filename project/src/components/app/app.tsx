@@ -12,7 +12,6 @@ import { ReviewType } from '../../types/review-type';
 import { FavoriteType } from '../../types/favorite-type';
 
 type AppScreenProps = {
-  // offersCount: number;
   offers: OfferType[];
   reviews: ReviewType[];
   favorites: FavoriteType[];

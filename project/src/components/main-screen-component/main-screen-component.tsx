@@ -23,7 +23,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
 
   return (
     <>
-      {(filderedOffers.length > 0) && (
+      {filderedOffers.length > 0 && (
         <div className="page page--gray page--main">
           <Header />
           <main className="page__main page__main--index">
@@ -50,9 +50,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
         </div>
       )}
       {
-        !filderedOffers && (
-          < EmptyMainScreen city={currentCity} />
-        )
+        !filderedOffers && < EmptyMainScreen city={currentCity} />
       }
     </>
   );

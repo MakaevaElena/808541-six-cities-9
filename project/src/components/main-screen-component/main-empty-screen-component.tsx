@@ -1,11 +1,11 @@
 import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
 
-type EmptyMainScreen = {
+type EmptyMainScreenProps = {
   city: string;
 }
 
-function EmptyMainScreen({ city }: EmptyMainScreen): JSX.Element {
+function EmptyMainScreen({ city }: EmptyMainScreenProps): JSX.Element {
 
   return (
     <div className="page page--gray page--main">

@@ -2,6 +2,7 @@ import { CITIES } from '../../../const';
 import { capitalizeFirstLetter } from '../../../utils';
 import { useAppDispatch } from '../../../hooks';
 import { setCity } from '../../../store/action';
+// import { CityName } from '../../../types/offer-type';
 
 type CityListProps = {
   city: string;
