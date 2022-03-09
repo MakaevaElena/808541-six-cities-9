@@ -12,19 +12,18 @@ import { ReviewType } from '../../types/review-type';
 import { FavoriteType } from '../../types/favorite-type';
 
 type AppScreenProps = {
-  offersCount: number;
   offers: OfferType[];
   reviews: ReviewType[];
   favorites: FavoriteType[];
 }
 
-function App({ offersCount, offers, reviews, favorites }: AppScreenProps): JSX.Element {
+function App({ offers, reviews, favorites }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen offersCount={offersCount} offers={offers} />}
+          element={<MainScreen offers={offers} />}
         />
         <Route
           path={AppRoute.SignIn}

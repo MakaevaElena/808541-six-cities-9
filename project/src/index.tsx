@@ -4,18 +4,17 @@ import App from './components/app/app';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { favorites } from './mocks/favorites';
-
-const Settings = {
-  OFFERS_COUNT: 10,
-};
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      offersCount={Settings.OFFERS_COUNT}
-      offers={offers}
-      reviews={reviews}
-      favorites={favorites}
-    />
+    <Provider store={store}>
+      <App
+        offers={offers}
+        reviews={reviews}
+        favorites={favorites}
+      />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'));

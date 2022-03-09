@@ -9,7 +9,7 @@ import activePin from './img/pin-active.svg';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
-  city: CityType;
+  currentCity: CityType;
   offers: OfferType[];
   selectedOffer: number | null;
 }
@@ -23,9 +23,10 @@ const getIcon = (url: string) => new Icon({
 const defaultIconPin = getIcon(defaultPin);
 const activeIconPin = getIcon(activePin);
 
-function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
+function Map({ currentCity, offers, selectedOffer }: MapProps): JSX.Element {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, city);
+  const map = useMap(mapRef, currentCity);
+  const { location: { latitude: lat, longitude: lng, zoom } } = currentCity;
 
   useEffect(() => {
     if (map) {
@@ -41,8 +42,9 @@ function Map({ city, offers, selectedOffer }: MapProps): JSX.Element {
           })
           .addTo(map);
       });
+      map.flyTo([lat, lng], zoom);
     }
-  }, [map, offers, selectedOffer]);
+  }, [map, offers, selectedOffer, currentCity, lat, lng, zoom]);
 
   return <section style={{ height: '100%' }} ref={mapRef}></section>;
 }
