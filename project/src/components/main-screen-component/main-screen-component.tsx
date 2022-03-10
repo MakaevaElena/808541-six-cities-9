@@ -9,6 +9,7 @@ import { getCityOffers } from '../../utils';
 import { State } from '../../types/state';
 import EmptyMainScreen from '../main-screen-component/main-empty-screen-component';
 import Sorting from '../common-components/sorting-component/sorting-component';
+import { sortOffers } from '../../utils';
 
 type MainScreenProps = {
   offers: OfferType[],
@@ -18,12 +19,14 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
   const currentCity = useAppSelector((state: State) => state.city);
-  const filderedOffers = getCityOffers(currentCity, offers);
+  const currentSortType = useAppSelector((state: State) => state.sortType);
+  const filteredOffers = getCityOffers(currentCity, offers);
+  const sortedOffers = sortOffers(filteredOffers, currentSortType);
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);
 
   return (
     <>
-      {filderedOffers.length > 0 && (
+      {filteredOffers.length > 0 && (
         <div className="page page--gray page--main">
           <Header />
           <main className="page__main page__main--index">
@@ -35,13 +38,13 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{filderedOffers.length} places to stay in {currentCity}</b>
+                  <b className="places__found">{sortedOffers.length} places to stay in {currentCity}</b>
                   <Sorting />
-                  <CardList offers={filderedOffers} onPlaceCardHover={getActiveOfferId} />
+                  <CardList offers={sortedOffers} onPlaceCardHover={getActiveOfferId} />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
-                    <Map currentCity={filderedOffers[0].city} offers={filderedOffers} selectedOffer={selectedOfferId} />
+                    <Map currentCity={filteredOffers[0].city} offers={filteredOffers} selectedOffer={selectedOfferId} />
                   </section>
                 </div>
               </div>
@@ -50,7 +53,7 @@ function MainScreen({ offers }: MainScreenProps): JSX.Element {
         </div>
       )}
       {
-        !filderedOffers && < EmptyMainScreen city={currentCity} />
+        !filteredOffers && < EmptyMainScreen city={currentCity} />
       }
     </>
   );

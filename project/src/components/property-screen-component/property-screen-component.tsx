@@ -21,7 +21,7 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
   const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
-  const [activeCardId, setActiveCardId] = useState(0);
+  const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
 
   return (
@@ -138,8 +138,6 @@ function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
                       key={`nearOffer-${nearOffer.id}`}
                       offer={nearOffer}
                       getOfferId={handleCardActive}
-                      resetOfferId={() => setActiveCardId(0)}
-                      activeCardId={activeCardId}
                     />
                   ))}
 
