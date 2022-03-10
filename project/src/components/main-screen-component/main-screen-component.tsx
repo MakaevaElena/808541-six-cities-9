@@ -9,6 +9,7 @@ import { getCityOffers } from '../../utils';
 import { State } from '../../types/state';
 import EmptyMainScreen from '../main-screen-component/main-empty-screen-component';
 import Sorting from '../common-components/sorting-component/sorting-component';
+// import { sortOffers } from '../../../utils';
 
 type MainScreenProps = {
   offers: OfferType[],

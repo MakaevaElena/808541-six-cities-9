@@ -9,15 +9,15 @@ export const getCityOffers = (city: string, offers: OfferType[]) => offers.filte
 
 export const getFavoriteOffers = (offers: OfferType[]) => offers.filter((offer) => offer.isFavorite);
 
-const SortingType = {
+export const SortingType = {
   POPULAR: 'Popular',
   PRICE_TO_HIGH: 'Price: low to high',
   PRICE_TO_LOW: 'Price: high to low',
   TOP: 'Top rated first',
 };
 
-export const sortOffers = (offers: OfferType[], type: string) => {
-  switch (type) {
+export const sortOffers = (offers: OfferType[], sortType: string) => {
+  switch (sortType) {
     case SortingType.PRICE_TO_HIGH:
       return offers.sort((a, b) => a.price - b.price);
       break;
