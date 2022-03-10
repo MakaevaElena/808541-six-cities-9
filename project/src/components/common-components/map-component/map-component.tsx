@@ -44,7 +44,7 @@ function Map({ currentCity, offers, selectedOffer }: MapProps): JSX.Element {
       });
       map.flyTo([lat, lng], zoom);
     }
-  }, [activeIconPin, map, offers, selectedOffer, currentCity, lat, lng, zoom]);
+  }, [map, offers, selectedOffer, currentCity, lat, lng, zoom]);
 
   return <section style={{ height: '100%' }} ref={mapRef}></section>;
 }
