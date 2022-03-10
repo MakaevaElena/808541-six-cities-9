@@ -1,6 +1,5 @@
 import PlaceCard from '../place-card-component/place-card-component';
 import { OfferType } from '../../../types/offer-type';
-import { useState } from 'react';
 
 type CardsListType = {
   offers: OfferType[];
@@ -8,8 +7,7 @@ type CardsListType = {
 }
 
 function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
-  const [activeCardId, setActiveCardId] = useState(0);
-  const handleCardActive = (valueId: number | null) => onPlaceCardHover(activeCardId);
+  const handleCardActive = (valueId: number | null) => onPlaceCardHover(valueId);
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -19,8 +17,6 @@ function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
             offer={offer}
             key={offer.id}
             getOfferId={handleCardActive}
-            resetOfferId={() => setActiveCardId(0)}
-            activeCardId={activeCardId}
           />))
       }
     </div>

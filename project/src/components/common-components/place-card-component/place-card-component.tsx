@@ -5,17 +5,14 @@ import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 
 type PlaceCardProps = {
   offer: OfferType;
-  activeCardId: number;
-  getOfferId: (id: number) => void;
-  resetOfferId: () => void;
+  getOfferId: (id: number | null) => void;
 }
 
-function PlaceCard({ offer, getOfferId, resetOfferId, activeCardId }: PlaceCardProps): JSX.Element {
+function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   return (
     <article
       className="cities__place-card place-card"
       onMouseOver={() => getOfferId(offer.id)}
-      onMouseLeave={() => resetOfferId()}
     >
       {offer.isPremium &&
         <div className="place-card__mark">

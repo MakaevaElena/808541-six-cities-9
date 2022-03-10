@@ -28,7 +28,7 @@ function Sorting(): JSX.Element {
     <form className="places__sorting" action="#" method="get" onClick={handleSortToggle}>
       <span className="places__sorting-caption">Sort by</span>
       <span className="places__sorting-type" tabIndex={0}>
-        {sortType}
+        &nbsp;&nbsp;{sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
