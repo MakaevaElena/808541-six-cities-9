@@ -1,6 +1,6 @@
 import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
-import { OfferType } from '../../types/offer-type';
+// import { OfferType } from '../../types/offer-type';
 import CardList from '../common-components/cards-list-component/cards-list-component';
 import { useState } from 'react';
 import Map from '../common-components/map-component/map-component';
@@ -11,13 +11,14 @@ import EmptyMainScreen from '../main-screen-component/main-empty-screen-componen
 import Sorting from '../common-components/sorting-component/sorting-component';
 import { sortOffers } from '../../utils';
 
-type MainScreenProps = {
-  offers: OfferType[],
-}
+// type MainScreenProps = {
+//   offers: OfferType[],
+// }
 
-function MainScreen({ offers }: MainScreenProps): JSX.Element {
+function MainScreen(): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
+  const offers = useAppSelector((state: State) => state.offers);
   const currentCity = useAppSelector((state: State) => state.city);
   const currentSortType = useAppSelector((state: State) => state.sortType);
   const filteredOffers = getCityOffers(currentCity, offers);

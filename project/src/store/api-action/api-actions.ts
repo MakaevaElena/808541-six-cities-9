@@ -9,7 +9,6 @@ import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
 import { errorHandle } from '../../services/error-handle';
 
-
 const loadOfferAction = createAsyncThunk(
   'data/fetchOffers',
   async () => {
@@ -48,7 +47,7 @@ const checkAuthAction = createAsyncThunk(
 );
 
 // !
-export const loginAction = createAsyncThunk(
+const loginAction = createAsyncThunk(
   'user/login',
   async ({ login: email, password }: AuthData) => {
     const { data: { token } } = await api.post<UserData>(APIRoute.Login, { email, password });
@@ -70,3 +69,4 @@ const logoutAction = createAsyncThunk(
   },
 );
 
+export { loadOfferAction, loadFavoriteAction, checkAuthAction, loginAction, logoutAction }

@@ -1,6 +1,6 @@
 import Header from '../common-components/header-component/header-component';
 import { useState } from 'react';
-import { ReviewType } from '../../types/review-type';
+// import { ReviewType } from '../../types/review-type';
 import { OfferType } from '../../types/offer-type';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
@@ -9,15 +9,20 @@ import NotFoundScreen from '../not-found-screen-component/not-found-screen-compo
 import { getRatingWidth } from '../../utils';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Map from '../common-components/map-component/map-component';
+import { useAppSelector } from '../../hooks';
+import { State } from '../../types/state';
 
-type PropertyScreenProps = {
-  offers: OfferType[],
-  reviews: ReviewType[],
-}
+// type PropertyScreenProps = {
+// offers: OfferType[],
+// reviews: ReviewType[],
+// }
 
 const MAX_COUNT_OF_OFFERS = 3;
 
-function PropertyScreen({ offers, reviews }: PropertyScreenProps): JSX.Element {
+function PropertyScreen(): JSX.Element {
+  const offers = useAppSelector((state: State) => state.offers);
+  const reviews = useAppSelector((state: State) => state.reviews);
+
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
   const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
