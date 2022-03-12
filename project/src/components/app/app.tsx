@@ -11,7 +11,8 @@ import PrivateRoute from '../private-route/private-route';
 // import { OfferType } from '../../types/offer-type';
 // import { ReviewType } from '../../types/review-type';
 // import { FavoriteType } from '../../types/favorite-type';
-import { LoadingScreen } from '../loading-screen-component/loading-screen-component';
+// import { LoadingScreen } from '../loading-screen-component/loading-screen-component';
+import Spinner from '../common-components/spinner-component/spinner-component';
 
 // type AppScreenProps = {
 // offers: OfferType[];
@@ -27,7 +28,7 @@ function App(): JSX.Element {
 
   if (isCheckedAuth(authorizationStatus) || !isOffersLoaded) {
     return (
-      <LoadingScreen />
+      <Spinner />
     );
   }
 
