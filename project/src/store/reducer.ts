@@ -5,7 +5,7 @@ import {
   setSortType,
   loadOffers,
   loadFavorite,
-  requireAuthorization,
+  requireAuthorization
   // loadReviews
 } from './action';
 import { CITIES } from '../const';

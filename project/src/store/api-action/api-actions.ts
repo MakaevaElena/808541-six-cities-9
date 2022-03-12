@@ -4,7 +4,7 @@ import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
 import { loadOffers, loadFavorite, requireAuthorization } from '../../store/action';
 import { saveToken, dropToken } from '../../services/token';
-import { APIRoute, AppRoute, AuthorizationStatus } from '../../const';
+import { APIRoute, AuthorizationStatus } from '../../const';
 import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
 import { errorHandle } from '../../services/error-handle';
@@ -69,4 +69,4 @@ const logoutAction = createAsyncThunk(
   },
 );
 
-export { loadOfferAction, loadFavoriteAction, checkAuthAction, loginAction, logoutAction }
+export { loadOfferAction, loadFavoriteAction, checkAuthAction, loginAction, logoutAction };

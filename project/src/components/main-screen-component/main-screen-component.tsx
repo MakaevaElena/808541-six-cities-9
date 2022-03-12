@@ -33,7 +33,7 @@ function MainScreen(): JSX.Element {
           <main className="page__main page__main--index">
             <h1 className="visually-hidden">Cities</h1>
             <div className="tabs">
-              <CityList city={currentCity} />
+              <CityList />
             </div>
             <div className="cities">
               <div className="cities__places-container container">
@@ -54,7 +54,7 @@ function MainScreen(): JSX.Element {
         </div>
       )}
       {
-        !filteredOffers && < EmptyMainScreen city={currentCity} />
+        !filteredOffers && < EmptyMainScreen />
       }
     </>
   );
