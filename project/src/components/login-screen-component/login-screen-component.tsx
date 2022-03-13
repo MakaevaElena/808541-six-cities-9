@@ -1,10 +1,11 @@
 import Header from '../common-components/header-component/header-component';
 import { FormEvent, useRef } from 'react';
 import { useAppDispatch } from '../../hooks';
-import { loginAction } from '../../store/api-action/api-actions';
+import { loginAction } from '../../store/api-actions/api-actions';
 import { AuthData } from '../../types/auth-data';
 import { AppRoute } from '../../const';
 import { Link } from 'react-router-dom';
+import { getLogin } from '../../store/action';
 
 function LoginScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -24,7 +25,7 @@ function LoginScreen(): JSX.Element {
         login: loginRef.current.value,
         password: passwordRef.current.value,
       });
-
+      dispatch(getLogin(loginRef.current.value));
     }
   };
 

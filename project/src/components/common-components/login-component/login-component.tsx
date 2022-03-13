@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../../const';
-import { useAppSelector } from '../../../hooks';
-// import { getToken } from '../../../services/token';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { logoutAction } from '../../../store/api-actions/api-actions';
 
 function Login(): JSX.Element {
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const currentLogin = useAppSelector((state) => state.login);
+  const dispatch = useAppDispatch();
 
   return (
     <nav className="header__nav">
@@ -17,11 +19,18 @@ function Login(): JSX.Element {
                 <div className="header__avatar-wrapper user__avatar-wrapper">
 
                 </div>
-                <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                <span className="header__user-name user__name">{currentLogin}</span>
               </Link>
             </li>
             <li className="header__nav-item">
-              <Link className="header__nav-link" to={AppRoute.Favorites}>
+              <Link
+                className="header__nav-link"
+                to={AppRoute.Main}
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  dispatch(logoutAction());
+                }}
+              >
                 <span className="header__signout">Sign out</span>
               </Link>
             </li>
@@ -30,7 +39,11 @@ function Login(): JSX.Element {
         {
           authorizationStatus !== AuthorizationStatus.Auth &&
           <li className="header__nav-item user">
-            <Link className="header__nav-link header__nav-link--profile" to={AppRoute.SignIn}>
+            <Link
+              className="header__nav-link header__nav-link--profile"
+              to={AppRoute.SignIn}
+              onClick={() => dispatch(logoutAction())}
+            >
               <div className="header__avatar-wrapper user__avatar-wrapper">
               </div>
               <span className="header__login">Sign in</span>

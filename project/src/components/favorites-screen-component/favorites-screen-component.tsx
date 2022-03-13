@@ -9,7 +9,10 @@ import { useAppSelector } from '../../hooks/index';
 // }
 
 function FavoritesScreen(): JSX.Element {
-  const { favorites } = useAppSelector((state) => state);
+  const favorites = useAppSelector((state) => state.favorites);
+  // !
+  // eslint-disable-next-line no-console
+  // console.log('@>>>', favorites);
 
   return (
     <div className="page">

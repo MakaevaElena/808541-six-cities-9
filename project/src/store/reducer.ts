@@ -5,7 +5,8 @@ import {
   setSortType,
   loadOffers,
   loadFavorite,
-  requireAuthorization
+  requireAuthorization,
+  getLogin
   // loadReviews
 } from './action';
 import { CITIES } from '../const';
@@ -14,10 +15,12 @@ import { OfferType } from '../types/offer-type';
 import { FavoriteType } from '../types/favorite-type';
 import { ReviewType } from '../types/review-type';
 import { AuthorizationStatus } from '../const';
+// import { AuthData } from '../types/auth-data';
 
 const DEFAULT_OFFERS: OfferType[] = [];
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] = [];
+// const DEFAULT_LOGIN: string = '';
 
 const initialState = {
   city: CITIES[0],
@@ -28,10 +31,14 @@ const initialState = {
   isOffersLoaded: false,
   isFavoriteLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
+  login: '',
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(getLogin, (state, action) => {
+      state.login = action.payload;
+    })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
     })

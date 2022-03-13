@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '../index';
 import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
-import { loadOffers, loadFavorite, requireAuthorization } from '../../store/action';
+import { loadOffers, loadFavorite, requireAuthorization } from '../action';
 import { saveToken, dropToken } from '../../services/token';
 import { APIRoute, AuthorizationStatus } from '../../const';
 import { AuthData } from '../../types/auth-data';

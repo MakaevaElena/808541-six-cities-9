@@ -11,3 +11,4 @@ export const loadOffers = createAction<OfferType[]>('loadOffers');
 export const loadFavorite = createAction<FavoriteType[]>('data/fetchFavorite');
 export const loadReviews = createAction<ReviewType[]>('data/fetchReviews');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+export const getLogin = createAction('GET_LOGIN', (value) => ({ payload: value }));
