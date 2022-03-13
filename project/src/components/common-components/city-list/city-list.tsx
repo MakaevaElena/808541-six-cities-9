@@ -4,10 +4,6 @@ import { useAppDispatch } from '../../../hooks';
 import { setCity } from '../../../store/action';
 import { useAppSelector } from '../../../hooks';
 
-// type CityListProps = {
-//   city: string;
-// }
-
 function CityList(): JSX.Element {
   const city = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();

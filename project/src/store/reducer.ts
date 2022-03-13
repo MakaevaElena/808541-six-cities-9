@@ -6,7 +6,9 @@ import {
   loadOffers,
   loadFavorite,
   requireAuthorization,
-  getLogin
+  getLogin,
+  loadOffersNearby,
+  getOfferId
   // loadReviews
 } from './action';
 import { CITIES } from '../const';
@@ -15,12 +17,11 @@ import { OfferType } from '../types/offer-type';
 import { FavoriteType } from '../types/favorite-type';
 import { ReviewType } from '../types/review-type';
 import { AuthorizationStatus } from '../const';
-// import { AuthData } from '../types/auth-data';
 
 const DEFAULT_OFFERS: OfferType[] = [];
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] = [];
-// const DEFAULT_LOGIN: string = '';
+const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
 
 const initialState = {
   city: CITIES[0],
@@ -32,10 +33,18 @@ const initialState = {
   isFavoriteLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
+  offersNearby: DEFAULT_OFFERS_NEARBY,
+  offerId: 0,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
+    .addCase(getOfferId, (state, action) => {
+      state.offerId = action.payload;
+    })
+    .addCase(loadOffersNearby, (state, action) => {
+      state.offersNearby = action.payload;
+    })
     .addCase(getLogin, (state, action) => {
       state.login = action.payload;
     })

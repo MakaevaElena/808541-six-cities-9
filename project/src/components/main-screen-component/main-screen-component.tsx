@@ -1,6 +1,5 @@
 import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
-// import { OfferType } from '../../types/offer-type';
 import CardList from '../common-components/cards-list-component/cards-list-component';
 import { useState } from 'react';
 import Map from '../common-components/map-component/map-component';
@@ -10,10 +9,6 @@ import { State } from '../../types/state';
 import EmptyMainScreen from '../main-screen-component/main-empty-screen-component';
 import Sorting from '../common-components/sorting-component/sorting-component';
 import { sortOffers } from '../../utils';
-
-// type MainScreenProps = {
-//   offers: OfferType[],
-// }
 
 function MainScreen(): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);

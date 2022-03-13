@@ -11,23 +11,25 @@ import PlaceCard from '../common-components/place-card-component/place-card-comp
 import Map from '../common-components/map-component/map-component';
 import { useAppSelector } from '../../hooks';
 import { State } from '../../types/state';
+import { store } from '../../store';
+import { loadOfferNearbyAction } from '../../store/api-actions/api-actions';
 
-// type PropertyScreenProps = {
-// offers: OfferType[],
-// reviews: ReviewType[],
-// }
-
-const MAX_COUNT_OF_OFFERS = 3;
+// const MAX_COUNT_OF_OFFERS = 3;
 
 function PropertyScreen(): JSX.Element {
   const offers = useAppSelector((state: State) => state.offers);
   const reviews = useAppSelector((state: State) => state.reviews);
+  store.dispatch(loadOfferNearbyAction());
+  const nearOffers = useAppSelector((state: State) => state.offersNearby);
 
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
-  const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
+  // const nearOffers = offers.slice(0, MAX_COUNT_OF_OFFERS);
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
+
+  // eslint-disable-next-line no-console
+  console.log('@>>>', nearOffers);
 
   return (
     <>

@@ -2,10 +2,6 @@ import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
 import { useAppSelector } from '../../hooks';
 
-// type EmptyMainScreenProps = {
-//   city: string;
-// }
-
 function EmptyMainScreen(): JSX.Element {
   const city = useAppSelector((state) => state.city);
 
