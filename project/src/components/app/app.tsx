@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 
@@ -8,17 +8,10 @@ import LoginScreen from '../login-screen-component/login-screen-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import PropertyScreen from '../property-screen-component/property-screen-component';
 import PrivateRoute from '../private-route/private-route';
-// import { OfferType } from '../../types/offer-type';
-// import { ReviewType } from '../../types/review-type';
-// import { FavoriteType } from '../../types/favorite-type';
-// import { LoadingScreen } from '../loading-screen-component/loading-screen-component';
 import Spinner from '../common-components/spinner-component/spinner-component';
 
-// type AppScreenProps = {
-// offers: OfferType[];
-// reviews: ReviewType[];
-// favorites: FavoriteType[];
-// }
+import HistoryRouter from '../../components/history-route/history-route';
+import browserHistory from '../../browser-history';
 
 const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
   authorizationStatus === AuthorizationStatus.Unknown;
@@ -33,7 +26,7 @@ function App(): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Main}
@@ -63,7 +56,7 @@ function App(): JSX.Element {
         />
 
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
