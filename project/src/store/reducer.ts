@@ -8,8 +8,8 @@ import {
   requireAuthorization,
   getLogin,
   loadOffersNearby,
-  getOfferId
-  // loadReviews
+  getOfferId,
+  loadReviews
 } from './action';
 import { CITIES } from '../const';
 import { SortingType } from '../utils';
@@ -59,10 +59,9 @@ export const reducer = createReducer(initialState, (builder) => {
       state.favorites = action.payload;
       state.isFavoriteLoaded = true;
     })
-    // .addCase(loadReviews, (state, action) => {
-    //   state.favorites = action.payload;
-    //   state.reviews = action.payload;
-    // })
+    .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
+    })
     .addCase(setCity, (state, action) => {
       state.city = action.payload;
     })

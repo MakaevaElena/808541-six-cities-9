@@ -4,15 +4,11 @@ import FavoritesList from '../common-components/favorit-list-component/favorite-
 import FooterComponent from '../common-components/footer-component/footer-component';
 import { useAppSelector } from '../../hooks/index';
 
-// type FavoritesScreenProps = {
-//   favorites: FavoriteType[];
-// }
-
 function FavoritesScreen(): JSX.Element {
   const favorites = useAppSelector((state) => state.favorites);
-  // !
+
   // eslint-disable-next-line no-console
-  // console.log('@>>>', favorites);
+  console.log('@>>>', favorites);
 
   return (
     <div className="page">
