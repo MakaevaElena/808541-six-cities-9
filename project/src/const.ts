@@ -15,7 +15,7 @@ export enum AuthorizationStatus {
 export enum APIRoute {
   Offers = '/hotels',
   Favorite = '/favorite',
-  Comments = '/comments',
+  Reviews = '/comments',
   Login = '/login',
   Logout = '/logout'
 }

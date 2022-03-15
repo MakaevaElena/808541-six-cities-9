@@ -11,7 +11,7 @@ import Map from '../common-components/map-component/map-component';
 import { useAppSelector } from '../../hooks';
 import { State } from '../../types/state';
 import { store } from '../../store';
-import { loadOfferNearbyAction } from '../../store/api-actions/api-actions';
+import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
 import { AuthorizationStatus } from '../../const';
 
 function PropertyScreen(): JSX.Element {
@@ -26,7 +26,11 @@ function PropertyScreen(): JSX.Element {
 
   useEffect(() => {
     store.dispatch(loadOfferNearbyAction(Number(id)));
+    store.dispatch(loadReviewsAction(Number(id)));
   }, []);
+
+  // eslint-disable-next-line no-console
+  console.log('console', reviews);
 
   return (
     <>

@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '../index';
 import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
-import { loadOffers, loadFavorite, requireAuthorization, redirectToRoute, loadOffersNearby } from '../action';
+import { ReviewType } from '../../types/review-type';
+import { loadOffers, loadFavorite, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews } from '../action';
 import { saveToken, dropToken } from '../../services/token';
 import { APIRoute, AuthorizationStatus, AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
@@ -11,7 +12,7 @@ import { errorHandle } from '../../services/error-handle';
 // import { useAppSelector } from '../../hooks';
 
 const loadOfferAction = createAsyncThunk(
-  'data/fetchOffers',
+  'data/loadOffers',
   async () => {
     try {
       const { data } = await api.get<OfferType[]>(APIRoute.Offers);
@@ -76,12 +77,24 @@ const logoutAction = createAsyncThunk(
 );
 
 const loadOfferNearbyAction = createAsyncThunk(
-  'data/fetchOffersNearby',
+  'data/loadOffersNearby',
   async (id: number) => {
     try {
       // const currentId = useAppSelector((state) => state.offerId);
       const { data } = await api.get<OfferType[]>(`${APIRoute.Offers}/${id}/nearby`);
       store.dispatch(loadOffersNearby(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const loadReviewsAction = createAsyncThunk(
+  'data/loadReviews',
+  async (id: number) => {
+    try {
+      const { data } = await api.get<ReviewType[]>(`${APIRoute.Reviews}/${id}`);
+      store.dispatch(loadReviews(data));
     } catch (error) {
       errorHandle(error);
     }

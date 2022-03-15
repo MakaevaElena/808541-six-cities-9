@@ -20,7 +20,7 @@ import { AuthorizationStatus } from '../const';
 
 const DEFAULT_OFFERS: OfferType[] = [];
 const DEFAULT_FAVORITES: FavoriteType[] = [];
-const DEFAULT_REVIEWS: ReviewType[] = [];
+const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
 
 const initialState = {
