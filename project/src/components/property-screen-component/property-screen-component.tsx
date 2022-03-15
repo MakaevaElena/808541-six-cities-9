@@ -1,5 +1,5 @@
 import Header from '../common-components/header-component/header-component';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { OfferType } from '../../types/offer-type';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
@@ -12,17 +12,21 @@ import { useAppSelector } from '../../hooks';
 import { State } from '../../types/state';
 import { store } from '../../store';
 import { loadOfferNearbyAction } from '../../store/api-actions/api-actions';
+import { AuthorizationStatus } from '../../const';
 
 function PropertyScreen(): JSX.Element {
-  store.dispatch(loadOfferNearbyAction());
-  const offers = useAppSelector((state: State) => state.offers);
-  const reviews = useAppSelector((state: State) => state.reviews);
-  const nearOffers = useAppSelector((state: State) => state.offersNearby);
+
+  const { offers, reviews, offersNearby, authorizationStatus } = useAppSelector((state: State) => state);
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
+
+  useEffect(() => {
+    store.dispatch(loadOfferNearbyAction(Number(id)));
+  }, []);
 
   return (
     <>
@@ -120,11 +124,11 @@ function PropertyScreen(): JSX.Element {
                   </div>
                   <section className="property__reviews reviews">
                     <ReviewList reviews={reviews} />
-                    <ReviewForm />
+                    {isAuth && <ReviewForm />}
                   </section>
                 </div>
                 <section className="property__map map">
-                  <Map currentCity={currentOffer.city} offers={nearOffers} selectedOffer={null} />
+                  <Map currentCity={currentOffer.city} offers={offersNearby} selectedOffer={null} />
                 </section>
               </div>
             </section>
@@ -133,7 +137,7 @@ function PropertyScreen(): JSX.Element {
                 <h2 className="near-places__title">Other places in the neighbourhood</h2>
                 <div className="near-places__list places__list">
 
-                  {nearOffers.map((nearOffer: OfferType) => (
+                  {offersNearby.map((nearOffer: OfferType) => (
                     <PlaceCard
                       key={`nearOffer-${nearOffer.id}`}
                       offer={nearOffer}

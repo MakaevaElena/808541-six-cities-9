@@ -13,5 +13,5 @@ export const loadReviews = createAction<ReviewType[]>('data/fetchReviews');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 export const getLogin = createAction('GET_LOGIN', (value) => ({ payload: value }));
 export const redirectToRoute = createAction<AppRoute>('redirectToRoute');
-export const loadOffersNearby = createAction<OfferType[]>('LOAD_OFFERS_NEARBY');
+export const loadOffersNearby = createAction<OfferType[]>('data/loadOffersNearby');
 export const getOfferId = createAction('GET_OFFER_ID', (value) => ({ payload: value }));

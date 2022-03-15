@@ -8,7 +8,7 @@ import { APIRoute, AuthorizationStatus, AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
 import { errorHandle } from '../../services/error-handle';
-import { useAppSelector } from '../../hooks';
+// import { useAppSelector } from '../../hooks';
 
 const loadOfferAction = createAsyncThunk(
   'data/fetchOffers',
@@ -77,10 +77,10 @@ const logoutAction = createAsyncThunk(
 
 const loadOfferNearbyAction = createAsyncThunk(
   'data/fetchOffersNearby',
-  async () => {
+  async (id: number) => {
     try {
-      const currentId = useAppSelector((state) => state.offerId);
-      const { data } = await api.get<OfferType[]>(`${APIRoute.Offers}/${currentId}/nearby`);
+      // const currentId = useAppSelector((state) => state.offerId);
+      const { data } = await api.get<OfferType[]>(`${APIRoute.Offers}/${id}/nearby`);
       store.dispatch(loadOffersNearby(data));
     } catch (error) {
       errorHandle(error);
