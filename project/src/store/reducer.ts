@@ -4,7 +4,7 @@ import {
   setOffers,
   setSortType,
   loadOffers,
-  loadFavorite,
+  loadFavorites,
   requireAuthorization,
   getLogin,
   loadOffersNearby,
@@ -55,7 +55,7 @@ export const reducer = createReducer(initialState, (builder) => {
       state.offers = action.payload;
       state.isOffersLoaded = true;
     })
-    .addCase(loadFavorite, (state, action) => {
+    .addCase(loadFavorites, (state, action) => {
       state.favorites = action.payload;
       state.isFavoriteLoaded = true;
     })

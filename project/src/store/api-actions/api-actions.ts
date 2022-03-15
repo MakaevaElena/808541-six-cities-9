@@ -3,13 +3,12 @@ import { api, store } from '../index';
 import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
 import { ReviewType } from '../../types/review-type';
-import { loadOffers, loadFavorite, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews } from '../action';
+import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews } from '../action';
 import { saveToken, dropToken } from '../../services/token';
 import { APIRoute, AuthorizationStatus, AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
 import { errorHandle } from '../../services/error-handle';
-// import { useAppSelector } from '../../hooks';
 
 const loadOfferAction = createAsyncThunk(
   'data/loadOffers',
@@ -28,7 +27,7 @@ const loadFavoriteAction = createAsyncThunk(
   async () => {
     try {
       const { data } = await api.get<FavoriteType[]>(APIRoute.Favorite);
-      store.dispatch(loadFavorite(data));
+      store.dispatch(loadFavorites(data));
     } catch (error) {
       errorHandle(error);
     }
@@ -80,7 +79,6 @@ const loadOfferNearbyAction = createAsyncThunk(
   'data/loadOffersNearby',
   async (id: number) => {
     try {
-      // const currentId = useAppSelector((state) => state.offerId);
       const { data } = await api.get<OfferType[]>(`${APIRoute.Offers}/${id}/nearby`);
       store.dispatch(loadOffersNearby(data));
     } catch (error) {

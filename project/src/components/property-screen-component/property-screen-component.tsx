@@ -18,7 +18,6 @@ function PropertyScreen(): JSX.Element {
 
   const { offers, reviews, offersNearby, authorizationStatus } = useAppSelector((state: State) => state);
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
-
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
@@ -28,9 +27,6 @@ function PropertyScreen(): JSX.Element {
     store.dispatch(loadOfferNearbyAction(Number(id)));
     store.dispatch(loadReviewsAction(Number(id)));
   }, []);
-
-  // eslint-disable-next-line no-console
-  console.log('console', reviews);
 
   return (
     <>
