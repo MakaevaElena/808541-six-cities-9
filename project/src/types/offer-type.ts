@@ -11,7 +11,7 @@ export type CityType = {
   name: CityName;
 }
 
-type HostType = {
+export type HostType = {
   avatarUrl: string
   id: number
   isPro: boolean

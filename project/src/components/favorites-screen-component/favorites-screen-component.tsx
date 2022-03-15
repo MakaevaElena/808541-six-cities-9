@@ -1,13 +1,18 @@
+import { useEffect } from 'react';
 import Header from '../common-components/header-component/header-component';
-import { FavoriteType } from '../../types/favorite-type';
 import FavoritesList from '../common-components/favorit-list-component/favorite-list-component';
 import FooterComponent from '../common-components/footer-component/footer-component';
+import { useAppSelector } from '../../hooks/index';
+import { store } from '../../store';
+import { loadFavoriteAction } from '../../store/api-actions/api-actions';
 
-type FavoritesScreenProps = {
-  favorites: FavoriteType[];
-}
+function FavoritesScreen(): JSX.Element {
+  const favorites = useAppSelector((state) => state.favorites);
 
-function FavoritesScreen({ favorites }: FavoritesScreenProps): JSX.Element {
+  useEffect(() => {
+    store.dispatch(loadFavoriteAction());
+  }, []);
+
   return (
     <div className="page">
       <Header />

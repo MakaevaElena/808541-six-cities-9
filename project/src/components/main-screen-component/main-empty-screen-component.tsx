@@ -1,11 +1,9 @@
 import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
+import { useAppSelector } from '../../hooks';
 
-type EmptyMainScreenProps = {
-  city: string;
-}
-
-function EmptyMainScreen({ city }: EmptyMainScreenProps): JSX.Element {
+function EmptyMainScreen(): JSX.Element {
+  const city = useAppSelector((state) => state.city);
 
   return (
     <div className="page page--gray page--main">
@@ -13,7 +11,7 @@ function EmptyMainScreen({ city }: EmptyMainScreenProps): JSX.Element {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <CityList city={city} />
+          <CityList />
         </div>
         <div className="cities">
 

@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import { offers } from './mocks/offers';
-import { reviews } from './mocks/reviews';
-import { favorites } from './mocks/favorites';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { loadOfferAction, checkAuthAction } from './store/api-actions/api-actions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+store.dispatch(loadOfferAction());
+store.dispatch(checkAuthAction());
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App
-        offers={offers}
-        reviews={reviews}
-        favorites={favorites}
-      />
+      <ToastContainer />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'));

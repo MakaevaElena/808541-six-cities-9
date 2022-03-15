@@ -2,12 +2,10 @@ import { CITIES } from '../../../const';
 import { capitalizeFirstLetter } from '../../../utils';
 import { useAppDispatch } from '../../../hooks';
 import { setCity } from '../../../store/action';
+import { useAppSelector } from '../../../hooks';
 
-type CityListProps = {
-  city: string;
-}
-
-function CityList({ city }: CityListProps): JSX.Element {
+function CityList(): JSX.Element {
+  const city = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
   return (
