@@ -1,5 +1,5 @@
 import Header from '../common-components/header-component/header-component';
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useState, ChangeEvent } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions/api-actions';
 import { AuthData } from '../../types/auth-data';
@@ -8,25 +8,28 @@ import { Link } from 'react-router-dom';
 import { getLogin } from '../../store/action';
 
 function LoginScreen(): JSX.Element {
-  const loginRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
 
+  const [authData, setAuthData] = useState({ email: '', password: '' });
   const dispatch = useAppDispatch();
 
-  const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
+  const onSubmit = (authUserData: AuthData) => {
+    dispatch(loginAction(authUserData));
   };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
-      dispatch(getLogin(loginRef.current.value));
-    }
+    onSubmit({
+      login: authData.email,
+      password: authData.password,
+    });
+    dispatch(getLogin(authData.email));
+  };
+
+  const handleAuthDataChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = evt.target;
+
+    setAuthData({ ...authData, [name]: value });
   };
 
   return (
@@ -40,7 +43,7 @@ function LoginScreen(): JSX.Element {
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
-                  ref={loginRef}
+                  onChange={handleAuthDataChange}
                   className="login__input form__input"
                   type="email"
                   name="email"
@@ -51,7 +54,7 @@ function LoginScreen(): JSX.Element {
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
                 <input
-                  ref={passwordRef}
+                  onChange={handleAuthDataChange}
                   className="login__input form__input"
                   type="password"
                   name="password"
