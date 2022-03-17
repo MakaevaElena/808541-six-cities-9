@@ -10,6 +10,8 @@ import {
   loadOffersNearby,
   getOfferId,
   loadReviews
+  // loadCurrentOfferComments
+  // loadCurrentOffer
 } from './action';
 import { CITIES } from '../const';
 import { SortingType } from '../utils';
@@ -19,13 +21,16 @@ import { ReviewType } from '../types/review-type';
 import { AuthorizationStatus } from '../const';
 
 const DEFAULT_OFFERS: OfferType[] = [];
+// const DEFAULT_CURRENT_OFFER: OfferType | null = null;
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
+const DEFAULT_CURRENT_COMMENTS: ReviewType[] = [];
 
 const initialState = {
   city: CITIES[0],
   offers: DEFAULT_OFFERS,
+  // currentOffer: DEFAULT_CURRENT_OFFER,
   favorites: DEFAULT_FAVORITES,
   reviews: DEFAULT_REVIEWS,
   sortType: SortingType.POPULAR,
@@ -35,10 +40,17 @@ const initialState = {
   login: '',
   offersNearby: DEFAULT_OFFERS_NEARBY,
   offerId: 0,
+  currentOfferComments: DEFAULT_CURRENT_COMMENTS,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
+    // .addCase(loadCurrentOffer, (state, action) => {
+    //   state.currentOffer = action.payload;
+    // })
+    // .addCase(loadCurrentOfferComments, (state, action) => {
+    //   state.currentOfferComments = action.payload;
+    // })
     .addCase(getOfferId, (state, action) => {
       state.offerId = action.payload;
     })

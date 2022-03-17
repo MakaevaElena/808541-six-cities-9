@@ -14,9 +14,14 @@ import { store } from '../../store';
 import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
 import { AuthorizationStatus } from '../../const';
 
-function PropertyScreen(): JSX.Element {
+function PropertyScreen(): JSX.Element | null {
+  const offers = useAppSelector((state: State) => state.offers);
+  // const currentOffer = useAppSelector((state: State) => state.currentOffer);
 
-  const { offers, reviews, offersNearby, authorizationStatus } = useAppSelector((state: State) => state);
+  const reviews = useAppSelector((state: State) => state.reviews);
+  const offersNearby = useAppSelector((state: State) => state.offersNearby);
+  const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
+
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
@@ -24,9 +29,18 @@ function PropertyScreen(): JSX.Element {
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
 
   useEffect(() => {
+    // store.dispatch(loadCurrentOfferAction(Number(id)));
+
     store.dispatch(loadOfferNearbyAction(Number(id)));
     store.dispatch(loadReviewsAction(Number(id)));
-  }, []);
+  }, [id]);
+
+  if (!id || !currentOffer) {
+    return null;
+  }
+
+  // eslint-disable-next-line no-console
+  // console.log('console', reviews);
 
   return (
     <>
@@ -124,7 +138,7 @@ function PropertyScreen(): JSX.Element {
                   </div>
                   <section className="property__reviews reviews">
                     <ReviewList reviews={reviews} />
-                    {isAuth && <ReviewForm />}
+                    {isAuth && <ReviewForm currentOffer={currentOffer} currentId={id} />}
                   </section>
                 </div>
                 <section className="property__map map">

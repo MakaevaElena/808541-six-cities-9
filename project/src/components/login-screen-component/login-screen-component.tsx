@@ -1,6 +1,6 @@
 import Header from '../common-components/header-component/header-component';
 import { FormEvent, useState, ChangeEvent } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions/api-actions';
 import { AuthData } from '../../types/auth-data';
 import { AppRoute } from '../../const';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { getLogin } from '../../store/action';
 
 function LoginScreen(): JSX.Element {
+  const currentCity = useAppSelector((state) => state.city);
 
   const [authData, setAuthData] = useState({ email: '', password: '' });
   const dispatch = useAppDispatch();
@@ -62,13 +63,18 @@ function LoginScreen(): JSX.Element {
                   required
                 />
               </div>
-              <button className="login__submit form__submit button" type="submit">Sign in</button>
+              <button
+                className="login__submit form__submit button"
+                type="submit"
+              >
+                Sign in
+              </button>
             </form>
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
               <Link className="locations__item-link" to={AppRoute.Main}>
-                <span>Amsterdam</span>
+                <span>{currentCity}</span>
               </Link>
             </div>
           </section>
