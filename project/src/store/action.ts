@@ -1,13 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
 import { OfferType } from '../types/offer-type';
-// import { FavoriteType } from '../types/favorite-type';
 import { AppRoute, AuthorizationStatus } from '../const';
 import { ReviewType } from '../types/review-type';
 
 export const setCity = createAction<string>('MainScreen/setSity');
-export const setOffers = createAction<OfferType[]>('MainScreen/setOffers');
 export const setSortType = createAction<string>('MainScreen/setSortType');
-export const loadOffers = createAction<OfferType[]>('loadOffers');
+export const loadOffers = createAction<OfferType[]>('MainScreen/loadOffers');
 export const loadFavorites = createAction<OfferType[]>('data/loadFavorites');
 export const loadReviews = createAction<ReviewType[]>('data/loadReviews');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');

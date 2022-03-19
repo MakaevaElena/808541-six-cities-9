@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '../index';
 import { OfferType, FavoriteFlagType } from '../../types/offer-type';
-// import { FavoriteType } from '../../types/favorite-type';
 import { ReviewType, ReviewWithIdType } from '../../types/review-type';
 import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews, loadCurrentOffer } from '../action';
 import { saveToken, dropToken } from '../../services/token';

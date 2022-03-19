@@ -3,7 +3,6 @@ import Header from '../common-components/header-component/header-component';
 import FavoritesList from '../common-components/favorit-list-component/favorite-list-component';
 import FooterComponent from '../common-components/footer-component/footer-component';
 import { useAppSelector } from '../../hooks/index';
-// import { store } from '../../store';
 import { useDispatch } from 'react-redux';
 import { loadFavoriteAction } from '../../store/api-actions/api-actions';
 
@@ -14,9 +13,6 @@ function FavoritesScreen(): JSX.Element {
   useEffect(() => {
     dispatch(loadFavoriteAction());
   }, []);
-
-  // eslint-disable-next-line no-console
-  console.log('console', favorites);
 
   return (
     <div className="page">

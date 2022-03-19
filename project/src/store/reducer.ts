@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
   setCity,
-  setOffers,
   setSortType,
   loadOffers,
   loadFavorites,
@@ -10,7 +9,6 @@ import {
   loadOffersNearby,
   getOfferId,
   loadReviews
-  // loadCurrentOffer
 } from './action';
 import { CITIES } from '../const';
 import { SortingType } from '../utils';
@@ -20,7 +18,7 @@ import { ReviewType } from '../types/review-type';
 import { AuthorizationStatus } from '../const';
 
 const DEFAULT_OFFERS: OfferType[] = [];
-// const DEFAULT_CURRENT_OFFER: OfferType | null = null;
+const DEFAULT_CURRENT_OFFER: OfferType | null = null;
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
@@ -29,12 +27,11 @@ const DEFAULT_CURRENT_COMMENTS: ReviewType[] = [];
 const initialState = {
   city: CITIES[0],
   offers: DEFAULT_OFFERS,
-  // currentOffer: DEFAULT_CURRENT_OFFER,
+  currentOffer: DEFAULT_CURRENT_OFFER,
   favorites: DEFAULT_FAVORITES,
   reviews: DEFAULT_REVIEWS,
   sortType: SortingType.POPULAR,
   isOffersLoaded: false,
-  // isFavoriteLoaded: false,
   isReviewsLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
@@ -45,9 +42,6 @@ const initialState = {
 
 export const reducer = createReducer(initialState, (builder) => {
   builder
-    // .addCase(loadCurrentOffer, (state, action) => {
-    //   state.currentOffer = action.payload;
-    // })
     .addCase(getOfferId, (state, action) => {
       state.offerId = action.payload;
     })
@@ -66,7 +60,6 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFavorites, (state, action) => {
       state.favorites = action.payload;
-      // state.isFavoriteLoaded = true;
     })
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;
@@ -74,9 +67,6 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setCity, (state, action) => {
       state.city = action.payload;
-    })
-    .addCase(setOffers, (state, action) => {
-      state.offers = action.payload;
     })
     .addCase(setSortType, (state, action) => {
       state.sortType = action.payload;

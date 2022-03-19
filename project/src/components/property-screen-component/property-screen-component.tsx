@@ -16,8 +16,6 @@ import { AuthorizationStatus } from '../../const';
 
 function PropertyScreen(): JSX.Element | null {
   const offers = useAppSelector((state: State) => state.offers);
-  // const currentOffer = useAppSelector((state: State) => state.currentOffer);
-
   const reviews = useAppSelector((state: State) => state.reviews);
   const offersNearby = useAppSelector((state: State) => state.offersNearby);
   const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
@@ -29,8 +27,6 @@ function PropertyScreen(): JSX.Element | null {
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
 
   useEffect(() => {
-    // store.dispatch(loadCurrentOfferAction(Number(id)));
-
     store.dispatch(loadOfferNearbyAction(Number(id)));
     store.dispatch(loadReviewsAction(Number(id)));
   }, [id]);
