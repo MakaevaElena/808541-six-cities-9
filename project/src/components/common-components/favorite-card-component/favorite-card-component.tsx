@@ -2,12 +2,25 @@ import { FavoriteType } from '../../../types/favorite-type';
 import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../const';
+import { useAppDispatch } from '../../../hooks';
+import { toggleFavoriteAction, loadOffersAction } from '../../../store/api-actions/api-actions';
 
 type FavoriteCardProps = {
   favoriteOffer: FavoriteType,
 }
 
 function FavoriteCard({ favoriteOffer }: FavoriteCardProps): JSX.Element {
+
+  const dispatch = useAppDispatch();
+
+  const handleFavoriteClick = async () => {
+    await dispatch(toggleFavoriteAction({
+      id: favoriteOffer.id,
+      flag: 0,
+    }));
+    await dispatch(loadOffersAction());
+  };
+
   return (
     <article className="favorites__card place-card">
       {favoriteOffer.isPremium && (
@@ -25,7 +38,11 @@ function FavoriteCard({ favoriteOffer }: FavoriteCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{favoriteOffer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button
+            className="place-card__bookmark-button place-card__bookmark-button--active button"
+            type="button"
+            onClick={handleFavoriteClick}
+          >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>

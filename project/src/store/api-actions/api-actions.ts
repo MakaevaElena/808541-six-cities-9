@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '../index';
-import { OfferType } from '../../types/offer-type';
-import { FavoriteType } from '../../types/favorite-type';
+import { OfferType, FavoriteFlagType } from '../../types/offer-type';
+// import { FavoriteType } from '../../types/favorite-type';
 import { ReviewType, ReviewWithIdType } from '../../types/review-type';
 import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews, loadCurrentOffer } from '../action';
 import { saveToken, dropToken } from '../../services/token';
@@ -10,7 +10,7 @@ import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
 import { errorHandle } from '../../services/error-handle';
 
-export const loadOfferAction = createAsyncThunk(
+export const loadOffersAction = createAsyncThunk(
   'data/loadOffers',
   async () => {
     try {
@@ -22,12 +22,36 @@ export const loadOfferAction = createAsyncThunk(
   },
 );
 
+export const loadCurrentOfferAction = createAsyncThunk(
+  'data/loadCurrentOffer',
+  async (id: number) => {
+    try {
+      const { data } = await api.get<OfferType>(`${APIRoute.Offers}/${id}`);
+      store.dispatch(loadCurrentOffer(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
 export const loadFavoriteAction = createAsyncThunk(
   'data/favorite',
   async () => {
     try {
-      const { data } = await api.get<FavoriteType[]>(APIRoute.Favorite);
+      const { data } = await api.get<OfferType[]>(APIRoute.Favorite);
       store.dispatch(loadFavorites(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const toggleFavoriteAction = createAsyncThunk(
+  'data/toggleFavorite',
+  async ({ id, flag }: FavoriteFlagType) => {
+    try {
+      await api.post<OfferType[]>(`${APIRoute.Favorite}/${id}/${flag}`);
+      store.dispatch(loadFavoriteAction());
     } catch (error) {
       errorHandle(error);
     }
@@ -105,18 +129,6 @@ export const postReviewAction = createAsyncThunk(
     try {
       const { data } = await api.post<ReviewType[]>(`${APIRoute.Reviews}/${id}`, { comment, rating });
       store.dispatch(loadReviews(data));
-    } catch (error) {
-      errorHandle(error);
-    }
-  },
-);
-
-export const loadCurrentOfferAction = createAsyncThunk(
-  'data/loadCurrentOffer',
-  async (id: number) => {
-    try {
-      const { data } = await api.get<OfferType>(`${APIRoute.Offers}/${id}`);
-      store.dispatch(loadCurrentOffer(data));
     } catch (error) {
       errorHandle(error);
     }

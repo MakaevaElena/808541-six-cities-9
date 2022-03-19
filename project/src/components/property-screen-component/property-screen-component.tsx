@@ -39,9 +39,6 @@ function PropertyScreen(): JSX.Element | null {
     return null;
   }
 
-  // eslint-disable-next-line no-console
-  // console.log('console', reviews);
-
   return (
     <>
       {currentOffer && (

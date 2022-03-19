@@ -34,7 +34,7 @@ const initialState = {
   reviews: DEFAULT_REVIEWS,
   sortType: SortingType.POPULAR,
   isOffersLoaded: false,
-  isFavoriteLoaded: false,
+  // isFavoriteLoaded: false,
   isReviewsLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
@@ -66,7 +66,7 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFavorites, (state, action) => {
       state.favorites = action.payload;
-      state.isFavoriteLoaded = true;
+      // state.isFavoriteLoaded = true;
     })
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;

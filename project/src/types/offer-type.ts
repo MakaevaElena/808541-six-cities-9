@@ -36,3 +36,8 @@ export type OfferType = {
   title: string
   type: string
 };
+
+export type FavoriteFlagType = {
+  id: number,
+  flag: number,
+}
