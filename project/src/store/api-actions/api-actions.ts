@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, store } from '../index';
 import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
-import { ReviewType, ReviewWithIdType, ReviewDataType } from '../../types/review-type';
+import { ReviewType, ReviewWithIdType } from '../../types/review-type';
 import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews, loadCurrentOffer } from '../action';
 import { saveToken, dropToken } from '../../services/token';
 import { APIRoute, AuthorizationStatus, AppRoute } from '../../const';
@@ -99,17 +99,17 @@ export const loadReviewsAction = createAsyncThunk(
   },
 );
 
-// export const loadCurrentOfferCommentsAction = createAsyncThunk(
-//   'data/loadCurrentOfferComments',
-//   async (id: number) => {
-//     try {
-//       const { data } = await api.get<ReviewType[]>(`${APIRoute.Reviews}/${id}`);
-//       store.dispatch(loadCurrentOfferComments(data));
-//     } catch (error) {
-//       errorHandle(error);
-//     }
-//   },
-// );
+export const postReviewAction = createAsyncThunk(
+  'user/postReview',
+  async ({ comment, rating, id }: ReviewWithIdType) => {
+    try {
+      const { data } = await api.post<ReviewType[]>(`${APIRoute.Reviews}/${id}`, { comment, rating });
+      store.dispatch(loadReviews(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
 
 export const loadCurrentOfferAction = createAsyncThunk(
   'data/loadCurrentOffer',
@@ -123,14 +123,3 @@ export const loadCurrentOfferAction = createAsyncThunk(
   },
 );
 
-export const newCommentAction = createAsyncThunk(
-  'user/newComment',
-  async ({ comment, rating, id }: ReviewWithIdType) => {
-    try {
-      await api.post<ReviewDataType>(`${APIRoute.Reviews}/${id}`, { comment, rating });
-    } catch (error) {
-      errorHandle(error);
-      store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
-    }
-  },
-);

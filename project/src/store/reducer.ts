@@ -10,7 +10,6 @@ import {
   loadOffersNearby,
   getOfferId,
   loadReviews
-  // loadCurrentOfferComments
   // loadCurrentOffer
 } from './action';
 import { CITIES } from '../const';
@@ -36,6 +35,7 @@ const initialState = {
   sortType: SortingType.POPULAR,
   isOffersLoaded: false,
   isFavoriteLoaded: false,
+  isReviewsLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
   offersNearby: DEFAULT_OFFERS_NEARBY,
@@ -47,9 +47,6 @@ export const reducer = createReducer(initialState, (builder) => {
   builder
     // .addCase(loadCurrentOffer, (state, action) => {
     //   state.currentOffer = action.payload;
-    // })
-    // .addCase(loadCurrentOfferComments, (state, action) => {
-    //   state.currentOfferComments = action.payload;
     // })
     .addCase(getOfferId, (state, action) => {
       state.offerId = action.payload;
@@ -73,6 +70,7 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;
+      state.isReviewsLoaded = true;
     })
     .addCase(setCity, (state, action) => {
       state.city = action.payload;
