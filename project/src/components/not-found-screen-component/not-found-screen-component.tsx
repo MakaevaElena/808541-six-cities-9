@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+
 import Header from '../common-components/header-component/header-component';
+
+import { AppRoute } from '../../const';
 
 function NotFoundScreen(): JSX.Element {
   return (

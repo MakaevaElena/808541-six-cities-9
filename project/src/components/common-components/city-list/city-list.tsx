@@ -1,8 +1,9 @@
-import { CITIES } from '../../../const';
-import { capitalizeFirstLetter } from '../../../utils';
 import { useAppDispatch } from '../../../hooks';
-import { setCity } from '../../../store/action';
 import { useAppSelector } from '../../../hooks';
+import { setCity } from '../../../store/action';
+import { capitalizeFirstLetter } from '../../../utils';
+
+import { CITIES } from '../../../const';
 
 function CityList(): JSX.Element {
   const city = useAppSelector((state) => state.city);

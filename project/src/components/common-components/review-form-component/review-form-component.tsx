@@ -1,10 +1,13 @@
 import { FormEvent, ChangeEvent, useState } from 'react';
+
 import Rating from '../rating-component/rating-component';
-import { OfferType } from '../../../types/offer-type';
-import { ReviewWithIdType } from '../../../types/review-type';
+
 import { postReviewAction } from '../../../store/api-actions/api-actions';
 import { loadReviewsAction } from '../../../store/api-actions/api-actions';
 import { useAppDispatch } from '../../../hooks';
+
+import { ReviewWithIdType } from '../../../types/review-type';
+import { OfferType } from '../../../types/offer-type';
 
 type ReviewFormType = {
   currentOffer: OfferType;

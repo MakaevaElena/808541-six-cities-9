@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../../const';
-import { OfferType } from '../../../types/offer-type';
-import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 import { useState } from 'react';
+
 import { useAppDispatch } from '../../../hooks';
 import { toggleFavoriteAction, loadOffersAction, loadFavoriteAction } from '../../../store/api-actions/api-actions';
+import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
+
+import { AppRoute } from '../../../const';
+import { OfferType } from '../../../types/offer-type';
 
 type PlaceCardProps = {
   offer: OfferType;

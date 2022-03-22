@@ -1,8 +1,10 @@
 import { useState } from 'react';
+
 import { setSortType } from '../../../store/action';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { State } from '../../../types/state';
 import { SortingType } from '../../../utils';
+
+import { State } from '../../../types/state';
 
 function Sorting(): JSX.Element {
   const dispatch = useAppDispatch();

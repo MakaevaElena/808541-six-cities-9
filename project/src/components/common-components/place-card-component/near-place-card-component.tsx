@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../../const';
+
 import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
+
+import { AppRoute } from '../../../const';
 import { OfferType } from '../../../types/offer-type';
 
 type NearPlaceCardProps = {

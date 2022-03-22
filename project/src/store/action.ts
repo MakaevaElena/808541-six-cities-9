@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
-import { OfferType } from '../types/offer-type';
+
 import { AppRoute, AuthorizationStatus } from '../const';
+import { OfferType } from '../types/offer-type';
 import { ReviewType } from '../types/review-type';
 
 export const setCity = createAction<string>('MainScreen/setSity');

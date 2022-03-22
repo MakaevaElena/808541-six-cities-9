@@ -1,18 +1,21 @@
-import Header from '../common-components/header-component/header-component';
+import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-import { OfferType } from '../../types/offer-type';
+
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
-import { useParams } from 'react-router';
+import Header from '../common-components/header-component/header-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
-import { getRatingWidth } from '../../utils';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Map from '../common-components/map-component/map-component';
+
+import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
 import { useAppSelector } from '../../hooks';
 import { State } from '../../types/state';
 import { store } from '../../store';
-import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
+import { getRatingWidth } from '../../utils';
+
 import { AuthorizationStatus } from '../../const';
+import { OfferType } from '../../types/offer-type';
 
 function PropertyScreen(): JSX.Element | null {
   const offers = useAppSelector((state: State) => state.offers);

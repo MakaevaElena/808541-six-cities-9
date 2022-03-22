@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setCity,
   setSortType,
@@ -10,12 +11,12 @@ import {
   getOfferId,
   loadReviews
 } from './action';
-import { CITIES } from '../const';
 import { SortingType } from '../utils';
+
+import { CITIES, AuthorizationStatus } from '../const';
 import { OfferType } from '../types/offer-type';
 import { FavoriteType } from '../types/favorite-type';
 import { ReviewType } from '../types/review-type';
-import { AuthorizationStatus } from '../const';
 
 const DEFAULT_OFFERS: OfferType[] = [];
 const DEFAULT_CURRENT_OFFER: OfferType | null = null;

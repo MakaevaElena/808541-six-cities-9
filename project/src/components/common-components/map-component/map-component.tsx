@@ -1,12 +1,14 @@
-import { Icon } from 'leaflet';
-import useMap from '../../../hooks/use-map';
 import { useEffect, useRef } from 'react';
-import { CityType, OfferType } from '../../../types/offer-type';
+import { Icon } from 'leaflet';
 import leaflet from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+import useMap from '../../../hooks/use-map';
 
 import defaultPin from './img/pin.svg';
 import activePin from './img/pin-active.svg';
-import 'leaflet/dist/leaflet.css';
+
+import { CityType, OfferType } from '../../../types/offer-type';
 
 type MapProps = {
   currentCity: CityType;

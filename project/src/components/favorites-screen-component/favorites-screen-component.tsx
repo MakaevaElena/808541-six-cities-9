@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Header from '../common-components/header-component/header-component';
 import FavoritesList from '../common-components/favorit-list-component/favorite-list-component';
 import FooterComponent from '../common-components/footer-component/footer-component';
-import { useAppSelector } from '../../hooks/index';
-import { useDispatch } from 'react-redux';
+
 import { loadFavoriteAction } from '../../store/api-actions/api-actions';
+import { useAppSelector } from '../../hooks/index';
 
 function FavoritesScreen(): JSX.Element {
   const favorites = useAppSelector((state) => state.favorites);
@@ -12,7 +14,7 @@ function FavoritesScreen(): JSX.Element {
 
   useEffect(() => {
     dispatch(loadFavoriteAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="page">

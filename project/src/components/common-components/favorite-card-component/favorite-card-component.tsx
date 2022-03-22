@@ -1,9 +1,11 @@
-import { FavoriteType } from '../../../types/favorite-type';
-import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../../const';
-import { useAppDispatch } from '../../../hooks';
+
 import { toggleFavoriteAction, loadOffersAction } from '../../../store/api-actions/api-actions';
+import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
+import { useAppDispatch } from '../../../hooks';
+
+import { AppRoute } from '../../../const';
+import { FavoriteType } from '../../../types/favorite-type';
 
 type FavoriteCardProps = {
   favoriteOffer: FavoriteType,

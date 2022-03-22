@@ -1,5 +1,6 @@
 import Header from '../common-components/header-component/header-component';
 import CityList from '../common-components/city-list/city-list';
+
 import { useAppSelector } from '../../hooks';
 
 function EmptyMainScreen(): JSX.Element {
