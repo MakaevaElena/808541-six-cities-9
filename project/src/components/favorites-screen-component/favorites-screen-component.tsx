@@ -22,8 +22,9 @@ function FavoritesScreen(): JSX.Element {
       <Header />
       <main className={`page__main page__main--favorites ${favorites ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
-          {favorites.length > 0 && <FavoritesList favorites={favorites} />}
-          <EmptyFavoriteList />
+          {
+            favorites.length === 0 ? <EmptyFavoriteList /> : <FavoritesList favorites={favorites} />
+          }
         </div>
       </main>
       <FooterComponent />
