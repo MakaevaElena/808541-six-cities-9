@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Header from '../common-components/header-component/header-component';
 import FavoritesList from '../common-components/favorit-list-component/favorite-list-component';
+import EmptyFavoriteList from '../common-components/favorit-list-component/empty-favorite-list-component';
 import FooterComponent from '../common-components/footer-component/footer-component';
 
 import { loadFavoriteAction } from '../../store/api-actions/api-actions';
@@ -19,9 +20,10 @@ function FavoritesScreen(): JSX.Element {
   return (
     <div className="page">
       <Header />
-      <main className="page__main page__main--favorites">
+      <main className={`page__main page__main--favorites ${favorites ? '' : 'page__main--favorites-empty'}`}>
         <div className="page__favorites-container container">
-          <FavoritesList favorites={favorites} />
+          {favorites.length > 0 && <FavoritesList favorites={favorites} />}
+          <EmptyFavoriteList />
         </div>
       </main>
       <FooterComponent />
