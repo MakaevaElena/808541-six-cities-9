@@ -1,31 +1,66 @@
-import { ChangeEvent, useState } from 'react';
+import { FormEvent, ChangeEvent, useState } from 'react';
+
 import Rating from '../rating-component/rating-component';
 
-function ReviewForm(): JSX.Element {
-  const [prevComment, setComment] = useState<string>('');
-  const [prevRaving, setRating] = useState<number>(0);
+import { postReviewAction } from '../../../store/api-actions/api-actions';
+import { useAppDispatch } from '../../../hooks';
 
-  const getRating = (evt: ChangeEvent<HTMLInputElement>) => {
-    const { value } = evt.target;
-    setRating(Number(value));
+import { ReviewWithIdType } from '../../../types/review-type';
+import { OfferType } from '../../../types/offer-type';
+
+type ReviewFormType = {
+  currentOffer: OfferType;
+  currentId: string;
+}
+
+const COMMENTS_LENGTH_MIN = 1;
+const COMMENTS_LENGTH_MAX = 50;
+
+function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
+
+  const [prevReview, setReview] = useState<string>('');
+  const [prevRating, setRating] = useState<number>(0);
+
+  const dispatch = useAppDispatch();
+
+  const getRating = (evt: ChangeEvent<HTMLInputElement>) => setRating(Number(evt.target.value));
+  const getComment = (evt: ChangeEvent<HTMLTextAreaElement>) => setReview(evt.target.value);
+
+  const onSubmit = (reviewData: ReviewWithIdType) => {
+    dispatch(postReviewAction(reviewData));
+    setRating(0);
+    setReview('');
   };
 
-  const getComment = (evt: { target: { value: string } }) => {
-    const { value } = evt.target;
-    setComment(value);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    onSubmit({
+      comment: prevReview,
+      rating: prevRating,
+      id: Number(currentId),
+    });
+
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <Rating getRating={getRating} rating={prevRaving} />
+      <Rating getRating={getRating} rating={prevRating} />
       <textarea
         onChange={getComment}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={prevComment}
+        value={prevReview}
+        minLength={COMMENTS_LENGTH_MIN}
+        maxLength={COMMENTS_LENGTH_MAX}
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -39,13 +74,10 @@ function ReviewForm(): JSX.Element {
             50 characters
           </b>.
         </p>
-        <button className="reviews__submit form__submit button"
-          type="submit"
-          disabled={!((prevRaving > 0) && (prevComment.length >= 50))}
-        >Submit
+        <button className="reviews__submit form__submit button" type="submit">Submit
         </button>
       </div>
-    </form>
+    </form >
   );
 }
 

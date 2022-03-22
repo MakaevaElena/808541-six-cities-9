@@ -1,5 +1,6 @@
-import { ReviewType } from '../../../types/review-type';
 import { getRatingWidth } from '../../../utils';
+
+import { ReviewType } from '../../../types/review-type';
 
 type ReviewsListProps = {
   reviews: ReviewType[];

@@ -1,22 +1,28 @@
-import Header from '../common-components/header-component/header-component';
+import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-import { OfferType } from '../../types/offer-type';
+
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
-import { useParams } from 'react-router';
+import Header from '../common-components/header-component/header-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
-import { getRatingWidth } from '../../utils';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
 import Map from '../common-components/map-component/map-component';
+
+import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
 import { useAppSelector } from '../../hooks';
 import { State } from '../../types/state';
 import { store } from '../../store';
-import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
+import { getRatingWidth } from '../../utils';
+
 import { AuthorizationStatus } from '../../const';
+import { OfferType } from '../../types/offer-type';
 
-function PropertyScreen(): JSX.Element {
+function PropertyScreen(): JSX.Element | null {
+  const offers = useAppSelector((state: State) => state.offers);
+  const reviews = useAppSelector((state: State) => state.reviews);
+  const offersNearby = useAppSelector((state: State) => state.offersNearby);
+  const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
 
-  const { offers, reviews, offersNearby, authorizationStatus } = useAppSelector((state: State) => state);
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
   const { id } = useParams<{ id?: string }>();
   const currentOffer = offers.find((offer) => offer.id === Number(id));
@@ -26,7 +32,11 @@ function PropertyScreen(): JSX.Element {
   useEffect(() => {
     store.dispatch(loadOfferNearbyAction(Number(id)));
     store.dispatch(loadReviewsAction(Number(id)));
-  }, []);
+  }, [id]);
+
+  if (!id || !currentOffer) {
+    return null;
+  }
 
   return (
     <>
@@ -124,7 +134,7 @@ function PropertyScreen(): JSX.Element {
                   </div>
                   <section className="property__reviews reviews">
                     <ReviewList reviews={reviews} />
-                    {isAuth && <ReviewForm />}
+                    {isAuth && <ReviewForm currentOffer={currentOffer} currentId={id} />}
                   </section>
                 </div>
                 <section className="property__map map">

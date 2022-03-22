@@ -1,4 +1,5 @@
 import FavoritesLocationCards from '../favorite-location-cards-components/favorite-location-cards-components';
+
 import { FavoriteType } from '../../../types/favorite-type';
 
 type FavoriteListProps = {

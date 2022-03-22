@@ -1,4 +1,5 @@
 import PlaceCard from '../place-card-component/place-card-component';
+
 import { OfferType } from '../../../types/offer-type';
 
 type CardsListType = {

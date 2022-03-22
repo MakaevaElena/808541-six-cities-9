@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import {
   setCity,
-  setOffers,
   setSortType,
   loadOffers,
   loadFavorites,
@@ -11,30 +11,34 @@ import {
   getOfferId,
   loadReviews
 } from './action';
-import { CITIES } from '../const';
 import { SortingType } from '../utils';
+
+import { CITIES, AuthorizationStatus } from '../const';
 import { OfferType } from '../types/offer-type';
 import { FavoriteType } from '../types/favorite-type';
 import { ReviewType } from '../types/review-type';
-import { AuthorizationStatus } from '../const';
 
 const DEFAULT_OFFERS: OfferType[] = [];
+const DEFAULT_CURRENT_OFFER: OfferType | null = null;
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
+const DEFAULT_CURRENT_COMMENTS: ReviewType[] = [];
 
 const initialState = {
   city: CITIES[0],
   offers: DEFAULT_OFFERS,
+  currentOffer: DEFAULT_CURRENT_OFFER,
   favorites: DEFAULT_FAVORITES,
   reviews: DEFAULT_REVIEWS,
   sortType: SortingType.POPULAR,
   isOffersLoaded: false,
-  isFavoriteLoaded: false,
+  isReviewsLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
   offersNearby: DEFAULT_OFFERS_NEARBY,
   offerId: 0,
+  currentOfferComments: DEFAULT_CURRENT_COMMENTS,
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -57,16 +61,13 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFavorites, (state, action) => {
       state.favorites = action.payload;
-      state.isFavoriteLoaded = true;
     })
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;
+      state.isReviewsLoaded = true;
     })
     .addCase(setCity, (state, action) => {
       state.city = action.payload;
-    })
-    .addCase(setOffers, (state, action) => {
-      state.offers = action.payload;
     })
     .addCase(setSortType, (state, action) => {
       state.sortType = action.payload;

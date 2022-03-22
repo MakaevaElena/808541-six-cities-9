@@ -12,3 +12,14 @@ export type ReviewType = {
   rating: number
   user: User
 };
+
+export type ReviewWithIdType = {
+  comment: string;
+  rating: number;
+  id: number;
+}
+
+export type ReviewDataType = {
+  comment: string;
+  rating: number;
+}

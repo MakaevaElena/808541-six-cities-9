@@ -1,16 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { api, store } from '../index';
-import { OfferType } from '../../types/offer-type';
-import { FavoriteType } from '../../types/favorite-type';
-import { ReviewType } from '../../types/review-type';
-import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews } from '../action';
+import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews, loadCurrentOffer } from '../action';
 import { saveToken, dropToken } from '../../services/token';
+import { errorHandle } from '../../services/error-handle';
+
 import { APIRoute, AuthorizationStatus, AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
 import { UserData } from '../../types/user-data';
-import { errorHandle } from '../../services/error-handle';
+import { OfferType, FavoriteFlagType } from '../../types/offer-type';
+import { ReviewType, ReviewWithIdType } from '../../types/review-type';
 
-const loadOfferAction = createAsyncThunk(
+export const loadOffersAction = createAsyncThunk(
   'data/loadOffers',
   async () => {
     try {
@@ -22,11 +23,23 @@ const loadOfferAction = createAsyncThunk(
   },
 );
 
-const loadFavoriteAction = createAsyncThunk(
+export const loadCurrentOfferAction = createAsyncThunk(
+  'data/loadCurrentOffer',
+  async (id: number) => {
+    try {
+      const { data } = await api.get<OfferType>(`${APIRoute.Offers}/${id}`);
+      store.dispatch(loadCurrentOffer(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const loadFavoriteAction = createAsyncThunk(
   'data/favorite',
   async () => {
     try {
-      const { data } = await api.get<FavoriteType[]>(APIRoute.Favorite);
+      const { data } = await api.get<OfferType[]>(APIRoute.Favorite);
       store.dispatch(loadFavorites(data));
     } catch (error) {
       errorHandle(error);
@@ -34,7 +47,19 @@ const loadFavoriteAction = createAsyncThunk(
   },
 );
 
-const checkAuthAction = createAsyncThunk(
+export const toggleFavoriteAction = createAsyncThunk(
+  'data/toggleFavorite',
+  async ({ id, flag }: FavoriteFlagType) => {
+    try {
+      await api.post<OfferType[]>(`${APIRoute.Favorite}/${id}/${flag}`);
+      store.dispatch(loadFavoriteAction());
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const checkAuthAction = createAsyncThunk(
   'user/checkAuth',
   async () => {
     try {
@@ -47,7 +72,7 @@ const checkAuthAction = createAsyncThunk(
   },
 );
 
-const loginAction = createAsyncThunk(
+export const loginAction = createAsyncThunk(
   'user/login',
   async ({ login: email, password }: AuthData) => {
     try {
@@ -62,7 +87,7 @@ const loginAction = createAsyncThunk(
   },
 );
 
-const logoutAction = createAsyncThunk(
+export const logoutAction = createAsyncThunk(
   'user/logout',
   async () => {
     try {
@@ -75,7 +100,7 @@ const logoutAction = createAsyncThunk(
   },
 );
 
-const loadOfferNearbyAction = createAsyncThunk(
+export const loadOfferNearbyAction = createAsyncThunk(
   'data/loadOffersNearby',
   async (id: number) => {
     try {
@@ -99,4 +124,15 @@ export const loadReviewsAction = createAsyncThunk(
   },
 );
 
-export { loadOfferAction, loadFavoriteAction, checkAuthAction, loginAction, logoutAction, loadOfferNearbyAction };
+export const postReviewAction = createAsyncThunk(
+  'user/postReview',
+  async ({ comment, rating, id }: ReviewWithIdType) => {
+    try {
+      const { data } = await api.post<ReviewType[]>(`${APIRoute.Reviews}/${id}`, { comment, rating });
+      store.dispatch(loadReviews(data));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+

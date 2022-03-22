@@ -1,7 +1,9 @@
-import { FavoriteType } from '../../../types/favorite-type';
-import FavoriteCard from '../favorite-card-component/favorite-card-component';
 import { Link } from 'react-router-dom';
+
+import FavoriteCard from '../favorite-card-component/favorite-card-component';
+
 import { AppRoute } from '../../../const';
+import { FavoriteType } from '../../../types/favorite-type';
 
 type FavoriteLocationProps = {
   locationOffers: FavoriteType[],
