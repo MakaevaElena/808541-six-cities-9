@@ -26,8 +26,15 @@ export enum HTTP_CODE {
   NOT_FOUND = 404,
 }
 
+export enum RatingName {
+  'Terribly',
+  'Badly',
+  'Not bad',
+  'Good',
+  'Perfect',
+}
+
 export const MAX_RATING = 5;
-
+export const RATING_VALUES = [5, 4, 3, 2, 1];
 export const PERSENT = 100;
-
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];

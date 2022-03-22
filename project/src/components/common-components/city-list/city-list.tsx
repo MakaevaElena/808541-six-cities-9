@@ -1,5 +1,4 @@
-import { useAppDispatch } from '../../../hooks';
-import { useAppSelector } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { setCity } from '../../../store/action';
 import { capitalizeFirstLetter } from '../../../utils';
 

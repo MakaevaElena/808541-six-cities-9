@@ -1,26 +1,17 @@
 import { ChangeEvent, Fragment } from 'react';
 
+import { RatingName, RATING_VALUES } from '../../../const';
+
 type RatingProps = {
   getRating: (evt: ChangeEvent<HTMLInputElement>) => void;
   rating: number;
-}
-
-const MAX_RATING_VALUE = 5;
-const ratingValues = new Array(MAX_RATING_VALUE).fill(null).map((_, index) => index + 1).sort((a, b) => b - a);
-
-enum RatingName {
-  'Terribly',
-  'Badly',
-  'Not bad',
-  'Good',
-  'Perfect',
 }
 
 function Rating({ rating, getRating }: RatingProps): JSX.Element {
   return (
     <div className="reviews__rating-form form__rating" >
       {
-        ratingValues.map((rank) => (
+        RATING_VALUES.map((rank) => (
           <Fragment key={rank}>
             <input
               className="form__rating-input visually-hidden"

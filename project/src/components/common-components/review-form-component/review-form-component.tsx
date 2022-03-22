@@ -3,7 +3,6 @@ import { FormEvent, ChangeEvent, useState } from 'react';
 import Rating from '../rating-component/rating-component';
 
 import { postReviewAction } from '../../../store/api-actions/api-actions';
-import { loadReviewsAction } from '../../../store/api-actions/api-actions';
 import { useAppDispatch } from '../../../hooks';
 
 import { ReviewWithIdType } from '../../../types/review-type';
@@ -29,7 +28,6 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
 
   const onSubmit = (reviewData: ReviewWithIdType) => {
     dispatch(postReviewAction(reviewData));
-    dispatch(loadReviewsAction(Number(currentId)));
     setRating(0);
     setReview('');
   };
@@ -43,7 +41,6 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
       id: Number(currentId),
     });
 
-    event.currentTarget.reset();
   };
 
   return (
