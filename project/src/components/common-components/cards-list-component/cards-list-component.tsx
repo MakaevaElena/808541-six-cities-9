@@ -13,7 +13,7 @@ function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
 
   const handleCardActive = useCallback((valueId: number | null) => {
     onPlaceCardHover(valueId);
-  }, []);
+  }, [onPlaceCardHover]);
 
   return (
     <div className="cities__places-list places__list tabs__content">

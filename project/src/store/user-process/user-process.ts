@@ -5,7 +5,7 @@ import { AuthorizationStatus, NameSpace } from '../../const';
 const initialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
-}
+};
 
 const userProcess = createSlice({
   name: NameSpace.user,
@@ -16,7 +16,7 @@ const userProcess = createSlice({
     },
     getLogin: (state, action) => {
       state.login = action.payload;
-    }
+    },
   },
 });
 
