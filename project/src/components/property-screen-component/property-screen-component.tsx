@@ -59,9 +59,6 @@ function PropertyScreen(): JSX.Element | null {
     return < NotFoundScreen />;
   }
 
-  // eslint-disable-next-line no-console
-  console.log('console', isOfferFavorite);
-
   return (
     <>
       {currentOffer !== null && (

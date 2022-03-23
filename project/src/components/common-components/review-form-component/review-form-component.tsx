@@ -13,8 +13,8 @@ type ReviewFormType = {
   currentId: string | undefined;
 }
 
-const COMMENTS_LENGTH_MIN = 1;
-const COMMENTS_LENGTH_MAX = 50;
+const COMMENTS_LENGTH_MIN = 50;
+const COMMENTS_LENGTH_MAX = 300;
 
 function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
 

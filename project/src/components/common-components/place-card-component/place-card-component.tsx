@@ -84,5 +84,4 @@ function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   );
 }
 
-// export default PlaceCard;
 export default memo(PlaceCard, (prevProps, nextProps) => prevProps.offer.id === nextProps.offer.id);

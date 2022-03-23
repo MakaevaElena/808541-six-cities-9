@@ -1,6 +1,5 @@
 import { Middleware } from 'redux';
 
-// import { reducer } from '../reducer';
 import { rootReducer } from '../root-reducer';
 import browserHistory from '../../browser-history';
 

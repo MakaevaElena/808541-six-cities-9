@@ -6,11 +6,9 @@ import { FavoriteType } from '../../types/favorite-type';
 import { ReviewType } from '../../types/review-type';
 
 const DEFAULT_OFFERS: OfferType[] = [];
-// const DEFAULT_OFFER: OfferType | null = null;
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
-// const DEFAULT_CURRENT_COMMENTS: ReviewType[] = [];
 
 const initialState = {
   offers: DEFAULT_OFFERS,
@@ -21,7 +19,6 @@ const initialState = {
   isReviewsLoaded: false,
   isCurrentOfferLoaded: false,
   currentOffer: DEFAULT_OFFER,
-  // currentOfferComments: DEFAULT_CURRENT_COMMENTS,
 };
 
 const offersData = createSlice({
@@ -43,10 +40,8 @@ const offersData = createSlice({
       state.isReviewsLoaded = true;
     },
     loadCurrentOffer: (state, action) => {
-      // if (state.currentOffer !== null) {
       state.currentOffer = action.payload;
       state.isCurrentOfferLoaded = true;
-      // }
     },
   },
 });
