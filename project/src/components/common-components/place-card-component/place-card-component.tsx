@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { memo } from 'react';
 
 import { useAppDispatch } from '../../../hooks';
 import { toggleFavoriteAction, loadOffersAction, loadFavoriteAction } from '../../../store/api-actions/api-actions';
@@ -83,4 +84,5 @@ function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   );
 }
 
-export default PlaceCard;
+// export default PlaceCard;
+export default memo(PlaceCard, (prevProps, nextProps) => prevProps.offer.id === nextProps.offer.id);

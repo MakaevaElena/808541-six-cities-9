@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import CityList from '../common-components/city-list/city-list';
-import CardList from '../common-components/cards-list-component/cards-list-component';
+import CardsList from '../common-components/cards-list-component/cards-list-component';
 import EmptyMainScreen from '../main-screen-component/main-empty-screen-component';
 import Header from '../common-components/header-component/header-component';
 import Map from '../common-components/map-component/map-component';
@@ -37,7 +37,7 @@ function MainScreen(): JSX.Element {
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">{sortedOffers.length} places to stay in {currentCity}</b>
                   <Sorting />
-                  <CardList offers={sortedOffers} onPlaceCardHover={getActiveOfferId} />
+                  <CardsList offers={sortedOffers} onPlaceCardHover={getActiveOfferId} />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
