@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { memo } from 'react';
 
 import { setSortType } from '../../../store/offers-process/offers-process';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
@@ -48,4 +49,4 @@ function Sorting(): JSX.Element {
   );
 }
 
-export default Sorting;
+export default memo(Sorting);

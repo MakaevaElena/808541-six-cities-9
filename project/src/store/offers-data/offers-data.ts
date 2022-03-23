@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { NameSpace } from '../../const';
+import { NameSpace, DEFAULT_OFFER } from '../../const';
 import { OfferType } from '../../types/offer-type';
 import { FavoriteType } from '../../types/favorite-type';
 import { ReviewType } from '../../types/review-type';
 
 const DEFAULT_OFFERS: OfferType[] = [];
-const DEFAULT_CURRENT_OFFER: OfferType | null = null;
+// const DEFAULT_OFFER: OfferType | null = null;
 const DEFAULT_FAVORITES: FavoriteType[] = [];
 const DEFAULT_REVIEWS: ReviewType[] | null = [];
 const DEFAULT_OFFERS_NEARBY: OfferType[] = [];
@@ -19,7 +19,8 @@ const initialState = {
   reviews: DEFAULT_REVIEWS,
   isOffersLoaded: false,
   isReviewsLoaded: false,
-  currentOffer: DEFAULT_CURRENT_OFFER,
+  isCurrentOfferLoaded: false,
+  currentOffer: DEFAULT_OFFER,
   // currentOfferComments: DEFAULT_CURRENT_COMMENTS,
 };
 
@@ -42,7 +43,10 @@ const offersData = createSlice({
       state.isReviewsLoaded = true;
     },
     loadCurrentOffer: (state, action) => {
+      // if (state.currentOffer !== null) {
       state.currentOffer = action.payload;
+      state.isCurrentOfferLoaded = true;
+      // }
     },
   },
 });

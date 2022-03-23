@@ -15,12 +15,13 @@ function FavoriteCard({ favoriteOffer }: FavoriteCardProps): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const handleFavoriteClick = async () => {
-    await dispatch(toggleFavoriteAction({
+  const handleFavoriteClick = () => {
+    dispatch(toggleFavoriteAction({
       id: favoriteOffer.id,
       flag: 0,
     }));
-    await dispatch(loadOffersAction());
+
+    dispatch(loadOffersAction());
   };
 
   return (

@@ -6,41 +6,65 @@ import ReviewForm from '../common-components/review-form-component/review-form-c
 import Header from '../common-components/header-component/header-component';
 import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
 import PlaceCard from '../common-components/place-card-component/place-card-component';
+import Spinner from '../common-components/spinner-component/spinner-component';
 import Map from '../common-components/map-component/map-component';
 
-import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
-import { useAppSelector } from '../../hooks';
-// import { State } from '../../types/state';
-import { store } from '../../store';
+import { loadOfferNearbyAction, loadReviewsAction, loadCurrentOfferAction } from '../../store/api-actions/api-actions';
+import { toggleFavoriteAction } from '../../store/api-actions/api-actions';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { getRatingWidth } from '../../utils';
 
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
 import { OfferType } from '../../types/offer-type';
 
 function PropertyScreen(): JSX.Element | null {
-  const offers = useAppSelector(({ DATA }) => DATA.offers);
+
+  const dispatch = useAppDispatch();
+  const { id } = useParams<{ id: string }>();
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
+  const currentOffer = useAppSelector(({ DATA }) => DATA.currentOffer);
+  const isCurrentOfferLoaded = useAppSelector(({ DATA }) => DATA.isCurrentOfferLoaded);
   const reviews = useAppSelector(({ DATA }) => DATA.reviews);
   const offersNearby = useAppSelector(({ DATA }) => DATA.offersNearby);
-  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
-
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
-  const { id } = useParams<{ id?: string }>();
-  const currentOffer = offers.find((offer) => offer.id === Number(id));
+
   const [activeCardId, setActiveCardId] = useState<number | null>(null);
   const handleCardActive = (valueId: number | null) => setActiveCardId(activeCardId);
 
-  useEffect(() => {
-    store.dispatch(loadOfferNearbyAction(Number(id)));
-    store.dispatch(loadReviewsAction(Number(id)));
-  }, [id]);
+  const [isOfferFavorite, setToggleFavorite] = useState(currentOffer.isFavorite);
+  const postFavoriteFlag = currentOffer.isFavorite ? 0 : 1;
 
-  if (!id || !currentOffer) {
-    return null;
+  useEffect(() => {
+    dispatch(loadCurrentOfferAction(Number(id)));
+    dispatch(loadOfferNearbyAction(Number(id)));
+    dispatch(loadReviewsAction(Number(id)));
+  }, [id, dispatch, isOfferFavorite]);
+
+  const handleFavoriteClick = () => {
+    dispatch(toggleFavoriteAction({
+      id: currentOffer.id,
+      flag: postFavoriteFlag,
+    }));
+
+    setToggleFavorite(!isOfferFavorite);
+  };
+
+  if (isCurrentOfferLoaded === false) {
+    return (
+      <Spinner />
+    );
   }
+
+  if (currentOffer.id === DEFAULT_OFFER_ID) {
+    return < NotFoundScreen />;
+  }
+
+  // eslint-disable-next-line no-console
+  console.log('console', isOfferFavorite);
 
   return (
     <>
-      {currentOffer && (
+      {currentOffer !== null && (
         <div className="page">
           <Header />
           <main className="page__main page__main--property">
@@ -69,7 +93,11 @@ function PropertyScreen(): JSX.Element | null {
                     <h1 className="property__name">
                       Beautiful &amp; luxurious studio at great location
                     </h1>
-                    <button className="property__bookmark-button  button" type="button">
+                    <button
+                      className={`place-card__bookmark-button  ${currentOffer.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
+                      type="button"
+                      onClick={handleFavoriteClick}
+                    >
                       <svg className="property__bookmark-icon" width="31" height="33">
                         <use xlinkHref="#icon-bookmark"></use>
                       </svg>
@@ -162,7 +190,7 @@ function PropertyScreen(): JSX.Element | null {
         </div >
       )}
       {
-        !currentOffer && (
+        currentOffer === null && (
           < NotFoundScreen />
         )
       }

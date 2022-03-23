@@ -10,7 +10,7 @@ import { OfferType } from '../../../types/offer-type';
 
 type ReviewFormType = {
   currentOffer: OfferType;
-  currentId: string;
+  currentId: string | undefined;
 }
 
 const COMMENTS_LENGTH_MIN = 1;
