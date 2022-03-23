@@ -10,7 +10,7 @@ import { loadFavoriteAction } from '../../store/api-actions/api-actions';
 import { useAppSelector } from '../../hooks/index';
 
 function FavoritesScreen(): JSX.Element {
-  const favorites = useAppSelector((state) => state.favorites);
+  const favorites = useAppSelector(({ DATA }) => DATA.favorites);
   const dispatch = useDispatch();
 
   useEffect(() => {

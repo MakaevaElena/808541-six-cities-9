@@ -34,6 +34,12 @@ export enum RatingName {
   'Perfect',
 }
 
+export enum NameSpace {
+  data = 'DATA',
+  offers = 'OFFERS',
+  user = 'USER',
+}
+
 export const MAX_RATING = 5;
 export const RATING_VALUES = [5, 4, 3, 2, 1];
 export const PERSENT = 100;

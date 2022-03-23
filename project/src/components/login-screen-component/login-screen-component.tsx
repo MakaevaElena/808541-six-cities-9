@@ -5,13 +5,13 @@ import Header from '../common-components/header-component/header-component';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions/api-actions';
-import { getLogin } from '../../store/action';
+import { getLogin } from '../../store/user-process/user-process';
 
 import { AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
 
 function LoginScreen(): JSX.Element {
-  const currentCity = useAppSelector((state) => state.city);
+  const currentCity = useAppSelector(({ OFFERS }) => OFFERS.city);
 
   const [authData, setAuthData] = useState({ email: '', password: '' });
   const dispatch = useAppDispatch();

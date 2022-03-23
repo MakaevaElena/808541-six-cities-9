@@ -9,14 +9,14 @@ import Sorting from '../common-components/sorting-component/sorting-component';
 
 import { useAppSelector } from '../../hooks';
 import { getCityOffers, sortOffers } from '../../utils';
-import { State } from '../../types/state';
+// import { State } from '../../types/state';
 
 function MainScreen(): JSX.Element {
   const [selectedOfferId, setSelectedOffer] = useState<number | null>(null);
 
-  const offers = useAppSelector((state: State) => state.offers);
-  const currentCity = useAppSelector((state: State) => state.city);
-  const currentSortType = useAppSelector((state: State) => state.sortType);
+  const offers = useAppSelector(({ DATA }) => DATA.offers);
+  const currentCity = useAppSelector(({ OFFERS }) => OFFERS.city);
+  const currentSortType = useAppSelector(({ OFFERS }) => OFFERS.sortType);
   const filteredOffers = getCityOffers(currentCity, offers);
   const sortedOffers = sortOffers(filteredOffers, currentSortType);
   const getActiveOfferId = (id: number | null) => setSelectedOffer(id);

@@ -10,7 +10,7 @@ import Map from '../common-components/map-component/map-component';
 
 import { loadOfferNearbyAction, loadReviewsAction } from '../../store/api-actions/api-actions';
 import { useAppSelector } from '../../hooks';
-import { State } from '../../types/state';
+// import { State } from '../../types/state';
 import { store } from '../../store';
 import { getRatingWidth } from '../../utils';
 
@@ -18,10 +18,10 @@ import { AuthorizationStatus } from '../../const';
 import { OfferType } from '../../types/offer-type';
 
 function PropertyScreen(): JSX.Element | null {
-  const offers = useAppSelector((state: State) => state.offers);
-  const reviews = useAppSelector((state: State) => state.reviews);
-  const offersNearby = useAppSelector((state: State) => state.offersNearby);
-  const authorizationStatus = useAppSelector((state: State) => state.authorizationStatus);
+  const offers = useAppSelector(({ DATA }) => DATA.offers);
+  const reviews = useAppSelector(({ DATA }) => DATA.reviews);
+  const offersNearby = useAppSelector(({ DATA }) => DATA.offersNearby);
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
 
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
   const { id } = useParams<{ id?: string }>();

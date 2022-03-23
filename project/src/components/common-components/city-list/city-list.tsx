@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks';
-import { setCity } from '../../../store/action';
+import { setCity } from '../../../store/offers-process/offers-process';
 import { capitalizeFirstLetter } from '../../../utils';
 
 import { CITIES } from '../../../const';
 
 function CityList(): JSX.Element {
-  const city = useAppSelector((state) => state.city);
+  const city = useAppSelector(({ OFFERS }) => OFFERS.city);
   const dispatch = useAppDispatch();
 
   return (
