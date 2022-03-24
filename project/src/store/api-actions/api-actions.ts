@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api, store } from '../index';
-import { loadOffers, loadFavorites, requireAuthorization, redirectToRoute, loadOffersNearby, loadReviews, loadCurrentOffer } from '../action';
+import { loadOffers, loadFavorites, loadOffersNearby, loadReviews, loadCurrentOffer } from '../offers-data/offers-data';
+import { requireAuthorization } from '../user-process/user-process';
+import { redirectToRoute } from '../action';
 import { saveToken, dropToken } from '../../services/token';
 import { errorHandle } from '../../services/error-handle';
 

@@ -4,7 +4,7 @@ import CityList from '../common-components/city-list/city-list';
 import { useAppSelector } from '../../hooks';
 
 function EmptyMainScreen(): JSX.Element {
-  const city = useAppSelector((state) => state.city);
+  const city = useAppSelector(({ OFFERS }) => OFFERS.city);
 
   return (
     <div className="page page--gray page--main">

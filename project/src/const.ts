@@ -1,3 +1,5 @@
+import { OfferType } from './types/offer-type';
+
 export enum AppRoute {
   Main = '/',
   SignIn = '/login',
@@ -34,7 +36,57 @@ export enum RatingName {
   'Perfect',
 }
 
+export enum NameSpace {
+  data = 'DATA',
+  offers = 'OFFERS',
+  user = 'USER',
+}
+
+export const Messages = {
+  AUTH_FAIL: 'Please enter valid email and password',
+  AUTH_INFO: 'Don\'t forget to sign in',
+  FAVORITE_NO_AUTH: 'You are not logged in',
+  REVIEW_POST_ERROR: 'Review sending failed',
+  OFFER_LOADING_ERROR: 'Offers loading failed',
+};
+
 export const MAX_RATING = 5;
 export const RATING_VALUES = [5, 4, 3, 2, 1];
 export const PERSENT = 100;
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
+export const DEFAULT_OFFER_ID = -1;
+export const DEFAULT_OFFER: OfferType = {
+  'city': {
+    'name': 'Dusseldorf',
+    'location': {
+      'latitude': 0,
+      'longitude': 0,
+      'zoom': 0,
+    },
+  },
+  'previewImage': '',
+  'images': [],
+  'title': '',
+  'isFavorite': false,
+  'isPremium': false,
+  'rating': 0,
+  'type': 'house',
+  'bedrooms': 0,
+  'maxAdults': 0,
+  'price': 0,
+  'goods': [],
+  'host': {
+    'id': 0,
+    'name': '',
+    'isPro': false,
+    'avatarUrl': '',
+  },
+  'description': '',
+  'location': {
+    'latitude': 0,
+    'longitude': 0,
+    'zoom': 0,
+  },
+  'id': DEFAULT_OFFER_ID,
+};
