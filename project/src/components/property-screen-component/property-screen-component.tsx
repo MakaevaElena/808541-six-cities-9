@@ -22,6 +22,8 @@ function PropertyScreen(): JSX.Element | null {
 
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
+  const currentId = Number(id);
+
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const currentOffer = useAppSelector(({ DATA }) => DATA.currentOffer);
   const isCurrentOfferLoaded = useAppSelector(({ DATA }) => DATA.isCurrentOfferLoaded);
@@ -36,9 +38,9 @@ function PropertyScreen(): JSX.Element | null {
   const postFavoriteFlag = currentOffer.isFavorite ? 0 : 1;
 
   useEffect(() => {
-    dispatch(loadCurrentOfferAction(Number(id)));
-    dispatch(loadOfferNearbyAction(Number(id)));
-    dispatch(loadReviewsAction(Number(id)));
+    dispatch(loadCurrentOfferAction(currentId));
+    dispatch(loadOfferNearbyAction(currentId));
+    dispatch(loadReviewsAction(currentId));
   }, [id, dispatch, isOfferFavorite]);
 
   const handleFavoriteClick = () => {
@@ -57,7 +59,7 @@ function PropertyScreen(): JSX.Element | null {
   }
 
   if (currentOffer.id === DEFAULT_OFFER_ID) {
-    return < NotFoundScreen />;
+    return <NotFoundScreen />;
   }
 
   return (
@@ -184,7 +186,7 @@ function PropertyScreen(): JSX.Element | null {
       )}
       {
         currentOffer === null && (
-          < NotFoundScreen />
+          <NotFoundScreen />
         )
       }
     </>
