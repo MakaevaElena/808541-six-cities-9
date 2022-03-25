@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { logoutAction } from '../../../store/api-actions/api-actions';
 
 function Login(): JSX.Element {
+
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const login = useAppSelector(({ USER }) => USER.login);
   // const avatar = useAppSelector(({ USER }) => USER.avatarUrl);

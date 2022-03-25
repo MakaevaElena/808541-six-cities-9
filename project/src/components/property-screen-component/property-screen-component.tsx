@@ -12,10 +12,11 @@ import Map from '../common-components/map-component/map-component';
 
 import { loadOfferNearbyAction, loadReviewsAction, loadCurrentOfferAction } from '../../store/api-actions/api-actions';
 import { toggleFavoriteAction } from '../../store/api-actions/api-actions';
+import { redirectToRoute } from '../../store/action';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { getRatingWidth } from '../../utils';
 
-import { AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
+import { AppRoute, AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
 import { OfferType } from '../../types/offer-type';
 
 function PropertyScreen(): JSX.Element | null {
@@ -44,6 +45,9 @@ function PropertyScreen(): JSX.Element | null {
   }, [id, dispatch, isOfferFavorite]);
 
   const handleFavoriteClick = () => {
+    if (authorizationStatus !== AuthorizationStatus.Auth) {
+      dispatch(redirectToRoute(AppRoute.SignIn));
+    }
     dispatch(toggleFavoriteAction({
       id: currentOffer.id,
       flag: postFavoriteFlag,
