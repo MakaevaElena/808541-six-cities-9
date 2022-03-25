@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 
+import FavoriteButton from '../common-components/favorite-button/favorite-button';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
 import Header from '../common-components/header-component/header-component';
@@ -90,16 +91,11 @@ function PropertyScreen(): JSX.Element | null {
                     <h1 className="property__name">
                       Beautiful &amp; luxurious studio at great location
                     </h1>
-                    <button
-                      className={`place-card__bookmark-button  ${currentOffer.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
-                      type="button"
-                      onClick={handleFavoriteClick}
-                    >
-                      <svg className="property__bookmark-icon" width="31" height="33">
-                        <use xlinkHref="#icon-bookmark"></use>
-                      </svg>
-                      <span className="visually-hidden">To bookmarks</span>
-                    </button>
+                    <FavoriteButton
+                      isFavorite={currentOffer.isFavorite}
+                      handleFavoriteButtonClick={handleFavoriteClick}
+                      isSmall={false}
+                    />
                   </div>
                   <div className="property__rating rating">
                     <div className="property__stars rating__stars">
