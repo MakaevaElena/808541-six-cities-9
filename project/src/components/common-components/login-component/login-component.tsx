@@ -7,21 +7,25 @@ import { logoutAction } from '../../../store/api-actions/api-actions';
 
 function Login(): JSX.Element {
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
-  const currentLogin = useAppSelector(({ USER }) => USER.login);
+  const login = useAppSelector(({ USER }) => USER.login);
+  // const avatar = useAppSelector(({ USER }) => USER.avatarUrl);
   const dispatch = useAppDispatch();
+  const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">
         {
-          authorizationStatus === AuthorizationStatus.Auth &&
+          isAuth &&
           <>
             <li className="header__nav-item user">
               <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
-                <div className="header__avatar-wrapper user__avatar-wrapper">
+                <div
+                  className="header__avatar-wrapper user__avatar-wrapper"
+                // style={{ backgroundImage: `url(${avatar}): 'avatar.svg'`, borderRadius: '50%' }}
+                />
 
-                </div>
-                <span className="header__user-name user__name">{currentLogin}</span>
+                <span className="header__user-name user__name">{login}</span>
               </Link>
             </li>
             <li className="header__nav-item">
@@ -39,7 +43,7 @@ function Login(): JSX.Element {
           </>
         }
         {
-          authorizationStatus !== AuthorizationStatus.Auth &&
+          !isAuth &&
           <li className="header__nav-item user">
             <Link
               className="header__nav-link header__nav-link--profile"
@@ -52,7 +56,7 @@ function Login(): JSX.Element {
           </li>
         }
       </ul>
-    </nav>
+    </nav >
   );
 }
 

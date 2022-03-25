@@ -5,6 +5,7 @@ import { AuthorizationStatus, NameSpace } from '../../const';
 const initialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   login: '',
+  avatarUrl: '',
 };
 
 const userProcess = createSlice({
@@ -17,9 +18,12 @@ const userProcess = createSlice({
     getLogin: (state, action) => {
       state.login = action.payload;
     },
+    getUserAvatar: (state, action) => {
+      state.avatarUrl = action.payload;
+    },
   },
 });
 
-const { requireAuthorization, getLogin } = userProcess.actions;
+const { requireAuthorization, getLogin, getUserAvatar } = userProcess.actions;
 
-export { userProcess, requireAuthorization, getLogin };
+export { userProcess, requireAuthorization, getLogin, getUserAvatar };
