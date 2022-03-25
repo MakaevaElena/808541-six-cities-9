@@ -165,7 +165,7 @@ function PropertyScreen(): JSX.Element | null {
                   </section>
                 </div>
                 <section className="property__map map">
-                  <Map currentCity={currentOffer.city} offers={offersNearby} selectedOffer={null} />
+                  <Map currentCity={currentOffer.city} offers={[...offersNearby, currentOffer]} selectedOffer={null} />
                 </section>
               </div>
             </section>
