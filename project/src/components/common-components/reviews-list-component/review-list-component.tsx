@@ -11,12 +11,13 @@ const MAX_COUNT_OF_REVIEWS = 10;
 function ReviewList({ reviews }: ReviewsListProps): JSX.Element {
 
   const totalReviews = reviews.slice(0, MAX_COUNT_OF_REVIEWS);
+  const sortedReviews = totalReviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <>
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{totalReviews.length}</span></h2>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{sortedReviews.length}</span></h2>
       <ul className="reviews__list">
-        {totalReviews.map((review) => (
+        {sortedReviews.map((review) => (
           <li className="reviews__item" key={review.id}>
             <div className="reviews__user user">
               <div className="reviews__avatar-wrapper user__avatar-wrapper">

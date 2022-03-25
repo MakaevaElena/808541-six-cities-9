@@ -9,7 +9,6 @@ function Login(): JSX.Element {
 
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const login = useAppSelector(({ USER }) => USER.login);
-  // const avatar = useAppSelector(({ USER }) => USER.avatarUrl);
   const dispatch = useAppDispatch();
   const isAuth = authorizationStatus === AuthorizationStatus.Auth;
 
@@ -21,10 +20,7 @@ function Login(): JSX.Element {
           <>
             <li className="header__nav-item user">
               <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
-                <div
-                  className="header__avatar-wrapper user__avatar-wrapper"
-                // style={{ backgroundImage: `url(${avatar}): 'avatar.svg'`, borderRadius: '50%' }}
-                />
+                <div className="header__avatar-wrapper user__avatar-wrapper" />
 
                 <span className="header__user-name user__name">{login}</span>
               </Link>
