@@ -1,5 +1,16 @@
 import { MouseEvent } from 'react';
 
+const ButtonSize = {
+  small: {
+    width: '18',
+    heigth: '31',
+  },
+  big: {
+    width: '19',
+    heigth: '33',
+  },
+};
+
 type ButtonPropsType = {
   isFavorite: boolean,
   isSmall: boolean,
@@ -16,12 +27,12 @@ function FavoriteButton({ handleFavoriteButtonClick, isFavorite, isSmall }: Butt
     >
       <svg
         className="place-card__bookmark-icon"
-        width={isSmall ? '18' : '31'}
-        height={isSmall ? '19' : '33'}
+        width={isSmall ? ButtonSize.small.width : ButtonSize.small.heigth}
+        height={isSmall ? ButtonSize.big.width : ButtonSize.big.heigth}
       >
         <use xlinkHref="#icon-bookmark"></use>
       </svg>
-      <span className="visually-hidden">{isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
+      <span className="visually-hidden">bookmarks</span>
     </button>
   );
 }

@@ -11,7 +11,7 @@ type NearPlaceCardProps = {
 
 function NearPlaceCard({ offer }: NearPlaceCardProps): JSX.Element {
   return (
-    < article className="near-places__card place-card">
+    <article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}${offer.id}`}>
           <img

@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { memo } from 'react';
 
 import FavoriteButton from '../favorite-button/favorite-button';
 
-import { useAppDispatch } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { redirectToRoute } from '../../../store/action';
 import { toggleFavoriteAction, loadOffersAction, loadFavoriteAction } from '../../../store/api-actions/api-actions';
 import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
 
-import { AppRoute } from '../../../const';
+import { AppRoute, AuthorizationStatus } from '../../../const';
 import { OfferType } from '../../../types/offer-type';
 
 type PlaceCardProps = {
@@ -17,12 +17,16 @@ type PlaceCardProps = {
 }
 
 function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
-
+  const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const [isOfferFavorite, setToggleFavorite] = useState(offer.isFavorite);
   const dispatch = useAppDispatch();
   const postFavoriteFlag = offer.isFavorite ? 0 : 1;
 
   const handleFavoriteClick = () => {
+
+    if (authorizationStatus !== AuthorizationStatus.Auth) {
+      dispatch(redirectToRoute(AppRoute.SignIn));
+    }
     dispatch(toggleFavoriteAction({
       id: offer.id,
       flag: postFavoriteFlag,
@@ -81,4 +85,4 @@ function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   );
 }
 
-export default memo(PlaceCard, (prevProps, nextProps) => prevProps.offer.id === nextProps.offer.id);
+export default PlaceCard;

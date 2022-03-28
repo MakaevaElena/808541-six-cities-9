@@ -43,6 +43,11 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
 
   };
 
+  const isSubmitDisabled =
+    prevRating === 0 ||
+    prevReview.length < COMMENTS_LENGTH_MIN ||
+    prevReview.length > COMMENTS_LENGTH_MAX;
+
   return (
     <form
       className="reviews__form form"
@@ -74,7 +79,11 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
             50 characters
           </b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit">Submit
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled={isSubmitDisabled}
+        >Submit
         </button>
       </div>
     </form >

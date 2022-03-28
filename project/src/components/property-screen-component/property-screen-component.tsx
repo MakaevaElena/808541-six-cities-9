@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 
+import FavoriteButton from '../common-components/favorite-button/favorite-button';
 import ReviewList from '../common-components/reviews-list-component/review-list-component';
 import ReviewForm from '../common-components/review-form-component/review-form-component';
 import Header from '../common-components/header-component/header-component';
@@ -11,16 +12,19 @@ import Map from '../common-components/map-component/map-component';
 
 import { loadOfferNearbyAction, loadReviewsAction, loadCurrentOfferAction } from '../../store/api-actions/api-actions';
 import { toggleFavoriteAction } from '../../store/api-actions/api-actions';
+import { redirectToRoute } from '../../store/action';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { getRatingWidth } from '../../utils';
 
-import { AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
+import { AppRoute, AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
 import { OfferType } from '../../types/offer-type';
 
 function PropertyScreen(): JSX.Element | null {
 
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
+  const currentId = Number(id);
+
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const currentOffer = useAppSelector(({ DATA }) => DATA.currentOffer);
   const isCurrentOfferLoaded = useAppSelector(({ DATA }) => DATA.isCurrentOfferLoaded);
@@ -35,12 +39,15 @@ function PropertyScreen(): JSX.Element | null {
   const postFavoriteFlag = currentOffer.isFavorite ? 0 : 1;
 
   useEffect(() => {
-    dispatch(loadCurrentOfferAction(Number(id)));
-    dispatch(loadOfferNearbyAction(Number(id)));
-    dispatch(loadReviewsAction(Number(id)));
+    dispatch(loadCurrentOfferAction(currentId));
+    dispatch(loadOfferNearbyAction(currentId));
+    dispatch(loadReviewsAction(currentId));
   }, [id, dispatch, isOfferFavorite]);
 
   const handleFavoriteClick = () => {
+    if (authorizationStatus !== AuthorizationStatus.Auth) {
+      dispatch(redirectToRoute(AppRoute.SignIn));
+    }
     dispatch(toggleFavoriteAction({
       id: currentOffer.id,
       flag: postFavoriteFlag,
@@ -56,7 +63,7 @@ function PropertyScreen(): JSX.Element | null {
   }
 
   if (currentOffer.id === DEFAULT_OFFER_ID) {
-    return < NotFoundScreen />;
+    return <NotFoundScreen />;
   }
 
   return (
@@ -90,16 +97,11 @@ function PropertyScreen(): JSX.Element | null {
                     <h1 className="property__name">
                       Beautiful &amp; luxurious studio at great location
                     </h1>
-                    <button
-                      className={`place-card__bookmark-button  ${currentOffer.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
-                      type="button"
-                      onClick={handleFavoriteClick}
-                    >
-                      <svg className="property__bookmark-icon" width="31" height="33">
-                        <use xlinkHref="#icon-bookmark"></use>
-                      </svg>
-                      <span className="visually-hidden">To bookmarks</span>
-                    </button>
+                    <FavoriteButton
+                      isFavorite={currentOffer.isFavorite}
+                      handleFavoriteButtonClick={handleFavoriteClick}
+                      isSmall={false}
+                    />
                   </div>
                   <div className="property__rating rating">
                     <div className="property__stars rating__stars">
@@ -163,7 +165,7 @@ function PropertyScreen(): JSX.Element | null {
                   </section>
                 </div>
                 <section className="property__map map">
-                  <Map currentCity={currentOffer.city} offers={offersNearby} selectedOffer={null} />
+                  <Map currentCity={currentOffer.city} offers={[...offersNearby, currentOffer]} selectedOffer={null} />
                 </section>
               </div>
             </section>
@@ -188,7 +190,7 @@ function PropertyScreen(): JSX.Element | null {
       )}
       {
         currentOffer === null && (
-          < NotFoundScreen />
+          <NotFoundScreen />
         )
       }
     </>

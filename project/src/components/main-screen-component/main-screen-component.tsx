@@ -49,7 +49,7 @@ function MainScreen(): JSX.Element {
         </div>
       )}
       {
-        !filteredOffers && < EmptyMainScreen />
+        !filteredOffers && <EmptyMainScreen />
       }
     </>
   );
