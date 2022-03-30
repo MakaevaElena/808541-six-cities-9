@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 
 import HistoryRouter from '../../components/history-route/history-route';
-import LoginScreen from '../login-screen-component/login-screen-component';
-import MainScreen from '../main-screen-component/main-screen-component';
-import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
-import FavoritesScreen from '../favorites-screen-component/favorites-screen-component';
-import PropertyScreen from '../property-screen-component/property-screen-component';
+import LoginScreenComponent from '../login-screen-component/login-screen-component';
+import MainScreenComponent from '../main-screen-component/main-screen-component';
+import NotFoundScreenComponent from '../not-found-screen-component/not-found-screen-component';
+import FavoritesScreenComponent from '../favorites-screen-component/favorites-screen-component';
+import PropertyScreenComponent from '../property-screen-component/property-screen-component';
 import PrivateRoute from '../private-route/private-route';
-import Spinner from '../common-components/spinner-component/spinner-component';
+import SpinnerComponent from '../common-components/spinner-component/spinner-component';
 
 import { useAppSelector } from '../../hooks';
 import browserHistory from '../../browser-history';
@@ -23,7 +23,7 @@ function App(): JSX.Element {
 
   if (isCheckedAuth(authorizationStatus) || !isOffersLoaded) {
     return (
-      <Spinner />
+      <SpinnerComponent />
     );
   }
 
@@ -32,11 +32,11 @@ function App(): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainScreen />}
+          element={<MainScreenComponent />}
         />
         <Route
           path={AppRoute.SignIn}
-          element={<LoginScreen />}
+          element={<LoginScreenComponent />}
         />
         <Route
           path={AppRoute.Favorites}
@@ -44,17 +44,17 @@ function App(): JSX.Element {
             <PrivateRoute
               authorizationStatus={authorizationStatus}
             >
-              <FavoritesScreen />
+              <FavoritesScreenComponent />
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Room}
-          element={<PropertyScreen />}
+          element={<PropertyScreenComponent />}
         />
         <Route
           path="*"
-          element={<NotFoundScreen />}
+          element={<NotFoundScreenComponent />}
         />
 
       </Routes>

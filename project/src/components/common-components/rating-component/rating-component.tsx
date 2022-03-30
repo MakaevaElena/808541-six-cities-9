@@ -7,7 +7,7 @@ type RatingProps = {
   rating: number;
 }
 
-function Rating({ rating, getRating }: RatingProps): JSX.Element {
+function RatingComponent({ rating, getRating }: RatingProps): JSX.Element {
   return (
     <div className="reviews__rating-form form__rating" >
       {
@@ -37,6 +37,6 @@ function Rating({ rating, getRating }: RatingProps): JSX.Element {
     </div>
   );
 }
-export default Rating;
+export default RatingComponent;
 
 

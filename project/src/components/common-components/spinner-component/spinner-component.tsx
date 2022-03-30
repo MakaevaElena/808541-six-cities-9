@@ -1,7 +1,7 @@
 import styles from './spinner.module.css';
 
-function Spinner(): JSX.Element {
+function SpinnerComponent(): JSX.Element {
   return <div className={styles['loader']}>Loading...</div>;
 }
 
-export default Spinner;
+export default SpinnerComponent;

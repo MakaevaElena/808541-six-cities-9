@@ -7,8 +7,6 @@ export const capitalizeFirstLetter = (word: string): string => word[0].toUpperCa
 
 export const getCityOffers = (city: string, offers: OfferType[]) => offers.filter((offer) => offer.city.name === city);
 
-export const getFavoriteOffers = (offers: OfferType[]) => offers.filter((offer) => offer.isFavorite);
-
 export const SortingType = {
   POPULAR: 'Popular',
   PRICE_TO_HIGH: 'Price: low to high',

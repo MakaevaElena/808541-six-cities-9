@@ -10,7 +10,7 @@ type FavoriteLocationProps = {
   city: string;
 }
 
-function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps): JSX.Element {
+function FavoritesLocationCardsComponent({ locationOffers, city }: FavoriteLocationProps): JSX.Element {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -30,4 +30,4 @@ function FavoritesLocationCards({ locationOffers, city }: FavoriteLocationProps)
   );
 }
 
-export default FavoritesLocationCards;
+export default FavoritesLocationCardsComponent;

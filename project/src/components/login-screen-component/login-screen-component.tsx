@@ -1,7 +1,7 @@
 import { FormEvent, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-import Header from '../common-components/header-component/header-component';
+import HeaderComponent from '../common-components/header-component/header-component';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions/api-actions';
@@ -10,7 +10,7 @@ import { getLogin } from '../../store/user-process/user-process';
 import { AppRoute } from '../../const';
 import { AuthData } from '../../types/auth-data';
 
-function LoginScreen(): JSX.Element {
+function LoginScreenComponent(): JSX.Element {
   const currentCity = useAppSelector(({ OFFERS }) => OFFERS.city);
 
   const [authData, setAuthData] = useState({ email: '', password: '' });
@@ -38,7 +38,7 @@ function LoginScreen(): JSX.Element {
 
   return (
     <div className="page page--gray page--login">
-      <Header isLoginPage />
+      <HeaderComponent isLoginPage />
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
@@ -87,4 +87,4 @@ function LoginScreen(): JSX.Element {
   );
 }
 
-export default LoginScreen;
+export default LoginScreenComponent;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-import FavoriteButton from '../favorite-button/favorite-button';
+import FavoriteButtonComponent from '../favorite-button-component/favorite-button-component';
 
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { redirectToRoute } from '../../../store/action';
@@ -16,7 +16,7 @@ type PlaceCardProps = {
   getOfferId: (id: number | null) => void;
 }
 
-function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
+function PlaceCardComponent({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const [isOfferFavorite, setToggleFavorite] = useState(offer.isFavorite);
   const dispatch = useAppDispatch();
@@ -64,7 +64,7 @@ function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <FavoriteButton
+          <FavoriteButtonComponent
             isFavorite={offer.isFavorite}
             handleFavoriteButtonClick={handleFavoriteClick}
             isSmall
@@ -85,4 +85,4 @@ function PlaceCard({ offer, getOfferId }: PlaceCardProps): JSX.Element {
   );
 }
 
-export default PlaceCard;
+export default PlaceCardComponent;

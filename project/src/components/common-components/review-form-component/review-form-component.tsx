@@ -1,6 +1,6 @@
 import { FormEvent, ChangeEvent, useState } from 'react';
 
-import Rating from '../rating-component/rating-component';
+import RatingComponent from '../rating-component/rating-component';
 
 import { postReviewAction } from '../../../store/api-actions/api-actions';
 import { useAppDispatch } from '../../../hooks';
@@ -16,7 +16,7 @@ type ReviewFormType = {
 const COMMENTS_LENGTH_MIN = 50;
 const COMMENTS_LENGTH_MAX = 300;
 
-function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
+function ReviewFormComponent({ currentOffer, currentId }: ReviewFormType): JSX.Element {
 
   const [prevReview, setReview] = useState<string>('');
   const [prevRating, setRating] = useState<number>(0);
@@ -56,7 +56,7 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
       onSubmit={handleSubmit}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <Rating getRating={getRating} rating={prevRating} />
+      <RatingComponent getRating={getRating} rating={prevRating} />
       <textarea
         onChange={getComment}
         className="reviews__textarea form__textarea"
@@ -90,6 +90,6 @@ function ReviewForm({ currentOffer, currentId }: ReviewFormType): JSX.Element {
   );
 }
 
-export default ReviewForm;
+export default ReviewFormComponent;
 
 

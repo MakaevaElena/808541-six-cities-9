@@ -17,7 +17,7 @@ type ButtonPropsType = {
   handleFavoriteButtonClick: (evt: MouseEvent<HTMLButtonElement>) => void,
 }
 
-function FavoriteButton({ handleFavoriteButtonClick, isFavorite, isSmall }: ButtonPropsType): JSX.Element {
+function FavoriteButtonComponent({ handleFavoriteButtonClick, isFavorite, isSmall }: ButtonPropsType): JSX.Element {
 
   return (
     <button
@@ -37,4 +37,4 @@ function FavoriteButton({ handleFavoriteButtonClick, isFavorite, isSmall }: Butt
   );
 }
 
-export default FavoriteButton;
+export default FavoriteButtonComponent;

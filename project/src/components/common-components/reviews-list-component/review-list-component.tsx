@@ -8,7 +8,7 @@ type ReviewsListProps = {
 
 const MAX_COUNT_OF_REVIEWS = 10;
 
-function ReviewList({ reviews }: ReviewsListProps): JSX.Element {
+function ReviewListComponent({ reviews }: ReviewsListProps): JSX.Element {
 
   const totalReviews = reviews.slice(0, MAX_COUNT_OF_REVIEWS);
   const sortedReviews = totalReviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -52,4 +52,4 @@ function ReviewList({ reviews }: ReviewsListProps): JSX.Element {
   );
 }
 
-export default ReviewList;
+export default ReviewListComponent;

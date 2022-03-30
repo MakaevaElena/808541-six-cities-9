@@ -1,30 +1,23 @@
 import { Link } from 'react-router-dom';
 
-import Header from '../common-components/header-component/header-component';
+import HeaderComponent from '../common-components/header-component/header-component';
 
 import { AppRoute } from '../../const';
+import './not-found-screen-component.css';
 
-function NotFoundScreen(): JSX.Element {
+function NotFoundScreenComponent(): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      <Header />
+      <HeaderComponent />
       <main className="page__main">
-        <div style={{
-          width: '100 %',
-          marginRight: 'auto',
-          marginLeft: 'auto',
-          paddingTop: '100px',
-          textAlign: 'center',
-        }}
-        >
-          <span style={{ fontSize: '28px', fontWeight: '500', marginRight: '10px' }}>404</span>
+        <div className="not-found-wrapper">
+          <span className="not-found-text">404</span>
           <h1>Page not found</h1>
           <Link to={AppRoute.Main}>Back to main page</Link>
         </div>
       </main >
-    </div>
-
+    </div >
   );
 }
 
-export default NotFoundScreen;
+export default NotFoundScreenComponent;

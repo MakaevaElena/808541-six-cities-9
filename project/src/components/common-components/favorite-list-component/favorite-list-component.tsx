@@ -1,4 +1,4 @@
-import FavoritesLocationCards from '../favorite-location-cards-components/favorite-location-cards-components';
+import FavoritesLocationCardsComponent from '../favorite-location-cards-component/favorite-location-cards-components';
 
 import { FavoriteType } from '../../../types/favorite-type';
 
@@ -16,7 +16,7 @@ const mapOffersToCity = (arr: FavoriteType[]) =>
     return acc;
   }, {});
 
-function FavoritesList({ favorites }: FavoriteListProps): JSX.Element {
+function FavoriteListComponent({ favorites }: FavoriteListProps): JSX.Element {
   const favoriteOffersByCities = mapOffersToCity(favorites);
 
   return (
@@ -25,7 +25,7 @@ function FavoritesList({ favorites }: FavoriteListProps): JSX.Element {
       <ul className="favorites__list">
 
         {Object.keys(favoriteOffersByCities).map((city) => (
-          <FavoritesLocationCards
+          <FavoritesLocationCardsComponent
             key={city}
             city={city}
             locationOffers={favoriteOffersByCities[city]}
@@ -36,4 +36,4 @@ function FavoritesList({ favorites }: FavoriteListProps): JSX.Element {
   );
 }
 
-export default FavoritesList;
+export default FavoriteListComponent;

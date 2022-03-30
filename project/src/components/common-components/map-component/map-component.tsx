@@ -25,7 +25,7 @@ const getIcon = (url: string) => new Icon({
 const defaultIconPin = getIcon(defaultPin);
 const activeIconPin = getIcon(activePin);
 
-function Map({ currentCity, offers, selectedOffer }: MapProps): JSX.Element {
+function MapComponent({ currentCity, offers, selectedOffer }: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, currentCity);
   const { location: { latitude: lat, longitude: lng, zoom } } = currentCity;
@@ -51,4 +51,4 @@ function Map({ currentCity, offers, selectedOffer }: MapProps): JSX.Element {
   return <section style={{ height: '100%' }} ref={mapRef}></section>;
 }
 
-export default Map;
+export default MapComponent;

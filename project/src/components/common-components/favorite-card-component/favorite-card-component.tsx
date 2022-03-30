@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import FavoriteButton from '../favorite-button/favorite-button';
+import FavoriteButtonComponent from '../favorite-button-component/favorite-button-component';
 
 import { toggleFavoriteAction, loadOffersAction } from '../../../store/api-actions/api-actions';
 import { getRatingWidth, capitalizeFirstLetter } from '../../../utils';
@@ -43,7 +43,7 @@ function FavoriteCard({ favoriteOffer }: FavoriteCardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{favoriteOffer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <FavoriteButton
+          <FavoriteButtonComponent
             isFavorite={favoriteOffer.isFavorite}
             handleFavoriteButtonClick={handleFavoriteClick}
             isSmall

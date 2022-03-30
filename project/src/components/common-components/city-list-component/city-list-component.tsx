@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../../../utils';
 
 import { CITIES } from '../../../const';
 
-function CityList(): JSX.Element {
+function CityListComponent(): JSX.Element {
   const city = useAppSelector(({ OFFERS }) => OFFERS.city);
   const dispatch = useAppDispatch();
 
@@ -30,4 +30,4 @@ function CityList(): JSX.Element {
   );
 }
 
-export default CityList;
+export default CityListComponent;

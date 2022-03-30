@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { AppRoute } from '../../../const';
 
-function Logo(): JSX.Element {
+function LogoComponent(): JSX.Element {
   return (
     <div className="header__left">
       <Link className="header__logo-link header__logo-link--active" to={AppRoute.Main}>
@@ -18,6 +18,6 @@ function Logo(): JSX.Element {
   );
 }
 
-export default Logo;
+export default LogoComponent;
 
 

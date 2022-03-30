@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import PlaceCard from '../place-card-component/place-card-component';
+import PlaceCardComponent from '../place-card-component/place-card-component';
 
 import { OfferType } from '../../../types/offer-type';
 
@@ -9,7 +9,7 @@ type CardsListType = {
   onPlaceCardHover: (id: number | null) => void,
 }
 
-function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
+function CardsListComponent({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
 
   const handleCardActive = useCallback((valueId: number | null) => {
     onPlaceCardHover(valueId);
@@ -19,7 +19,7 @@ function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
     <div className="cities__places-list places__list tabs__content">
       {
         offers.map((offer) => (
-          <PlaceCard
+          <PlaceCardComponent
             offer={offer}
             key={offer.id}
             getOfferId={handleCardActive}
@@ -29,4 +29,4 @@ function CardsList({ offers, onPlaceCardHover }: CardsListType): JSX.Element {
   );
 }
 
-export default CardsList;
+export default CardsListComponent;

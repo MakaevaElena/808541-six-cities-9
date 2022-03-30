@@ -1,14 +1,14 @@
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 
-import FavoriteButton from '../common-components/favorite-button/favorite-button';
-import ReviewList from '../common-components/reviews-list-component/review-list-component';
-import ReviewForm from '../common-components/review-form-component/review-form-component';
-import Header from '../common-components/header-component/header-component';
-import NotFoundScreen from '../not-found-screen-component/not-found-screen-component';
-import PlaceCard from '../common-components/place-card-component/place-card-component';
-import Spinner from '../common-components/spinner-component/spinner-component';
-import Map from '../common-components/map-component/map-component';
+import FavoriteButtonComponent from '../common-components/favorite-button-component/favorite-button-component';
+import ReviewListComponent from '../common-components/reviews-list-component/review-list-component';
+import ReviewFormComponent from '../common-components/review-form-component/review-form-component';
+import HeaderComponent from '../common-components/header-component/header-component';
+import NotFoundScreenComponent from '../not-found-screen-component/not-found-screen-component';
+import PlaceCardComponent from '../common-components/place-card-component/place-card-component';
+import SpinnerComponent from '../common-components/spinner-component/spinner-component';
+import MapComponent from '../common-components/map-component/map-component';
 
 import { loadOfferNearbyAction, loadReviewsAction, loadCurrentOfferAction } from '../../store/api-actions/api-actions';
 import { toggleFavoriteAction } from '../../store/api-actions/api-actions';
@@ -19,7 +19,7 @@ import { getRatingWidth } from '../../utils';
 import { AppRoute, AuthorizationStatus, DEFAULT_OFFER_ID } from '../../const';
 import { OfferType } from '../../types/offer-type';
 
-function PropertyScreen(): JSX.Element | null {
+function PropertyScreenComponent(): JSX.Element | null {
 
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
@@ -58,19 +58,19 @@ function PropertyScreen(): JSX.Element | null {
 
   if (isCurrentOfferLoaded === false) {
     return (
-      <Spinner />
+      <SpinnerComponent />
     );
   }
 
   if (currentOffer.id === DEFAULT_OFFER_ID) {
-    return <NotFoundScreen />;
+    return <NotFoundScreenComponent />;
   }
 
   return (
     <>
       {currentOffer !== null && (
         <div className="page">
-          <Header />
+          <HeaderComponent />
           <main className="page__main page__main--property">
             <section className="property">
               <div className="property__gallery-container container">
@@ -97,7 +97,7 @@ function PropertyScreen(): JSX.Element | null {
                     <h1 className="property__name">
                       Beautiful &amp; luxurious studio at great location
                     </h1>
-                    <FavoriteButton
+                    <FavoriteButtonComponent
                       isFavorite={currentOffer.isFavorite}
                       handleFavoriteButtonClick={handleFavoriteClick}
                       isSmall={false}
@@ -160,12 +160,12 @@ function PropertyScreen(): JSX.Element | null {
                     {currentOffer.description}
                   </div>
                   <section className="property__reviews reviews">
-                    <ReviewList reviews={reviews} />
-                    {isAuth && <ReviewForm currentOffer={currentOffer} currentId={id} />}
+                    <ReviewListComponent reviews={reviews} />
+                    {isAuth && <ReviewFormComponent currentOffer={currentOffer} currentId={id} />}
                   </section>
                 </div>
                 <section className="property__map map">
-                  <Map currentCity={currentOffer.city} offers={[...offersNearby, currentOffer]} selectedOffer={null} />
+                  <MapComponent currentCity={currentOffer.city} offers={[...offersNearby, currentOffer]} selectedOffer={null} />
                 </section>
               </div>
             </section>
@@ -175,7 +175,7 @@ function PropertyScreen(): JSX.Element | null {
                 <div className="near-places__list places__list">
 
                   {offersNearby.map((nearOffer: OfferType) => (
-                    <PlaceCard
+                    <PlaceCardComponent
                       key={`nearOffer-${nearOffer.id}`}
                       offer={nearOffer}
                       getOfferId={handleCardActive}
@@ -190,11 +190,11 @@ function PropertyScreen(): JSX.Element | null {
       )}
       {
         currentOffer === null && (
-          <NotFoundScreen />
+          <NotFoundScreenComponent />
         )
       }
     </>
   );
 }
 
-export default PropertyScreen;
+export default PropertyScreenComponent;

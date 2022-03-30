@@ -5,11 +5,11 @@ import { setSortType } from '../../../store/offers-process/offers-process';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { SortingType } from '../../../utils';
 
-function Sorting(): JSX.Element {
+function SortingComponent(): JSX.Element {
   const dispatch = useAppDispatch();
   const sortType = useAppSelector(({ OFFERS }) => OFFERS.sortType);
 
-  const [isOpen, toggleOppen] = useState(false);
+  const [isOpen, toggleOpen] = useState(false);
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -17,7 +17,7 @@ function Sorting(): JSX.Element {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={() => toggleOppen(!isOpen)}
+        onClick={() => toggleOpen(!isOpen)}
       >
         &nbsp;&nbsp;{sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -35,7 +35,7 @@ function Sorting(): JSX.Element {
               tabIndex={0}
               onClick={
                 () => {
-                  toggleOppen(false);
+                  toggleOpen(false);
                   dispatch(setSortType(type));
                 }
               }
@@ -49,4 +49,4 @@ function Sorting(): JSX.Element {
   );
 }
 
-export default memo(Sorting);
+export default memo(SortingComponent);

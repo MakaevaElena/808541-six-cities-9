@@ -5,7 +5,7 @@ import { AppRoute, AuthorizationStatus } from '../../../const';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { logoutAction } from '../../../store/api-actions/api-actions';
 
-function Login(): JSX.Element {
+function LoginComponent(): JSX.Element {
 
   const authorizationStatus = useAppSelector(({ USER }) => USER.authorizationStatus);
   const login = useAppSelector(({ USER }) => USER.login);
@@ -57,5 +57,5 @@ function Login(): JSX.Element {
   );
 }
 
-export default Login;
+export default LoginComponent;
 

@@ -1,18 +1,18 @@
-import Header from '../common-components/header-component/header-component';
-import CityList from '../common-components/city-list/city-list';
+import HeaderComponent from '../common-components/header-component/header-component';
+import CityListComponent from '../common-components/city-list-component/city-list-component';
 
 import { useAppSelector } from '../../hooks';
 
-function EmptyMainScreen(): JSX.Element {
+function EmptyMainScreenComponent(): JSX.Element {
   const city = useAppSelector(({ OFFERS }) => OFFERS.city);
 
   return (
     <div className="page page--gray page--main">
-      <Header />
+      <HeaderComponent />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <CityList />
+          <CityListComponent />
         </div>
         <div className="cities">
 
@@ -33,4 +33,4 @@ function EmptyMainScreen(): JSX.Element {
   );
 }
 
-export default EmptyMainScreen;
+export default EmptyMainScreenComponent;
