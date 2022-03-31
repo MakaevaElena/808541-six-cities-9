@@ -9,7 +9,7 @@ function SortingComponent(): JSX.Element {
   const dispatch = useAppDispatch();
   const sortType = useAppSelector(({ OFFERS }) => OFFERS.sortType);
 
-  const [isOpen, toggleOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -17,7 +17,7 @@ function SortingComponent(): JSX.Element {
       <span
         className="places__sorting-type"
         tabIndex={0}
-        onClick={() => toggleOpen(!isOpen)}
+        onClick={() => setIsOpen(!isOpen)}
       >
         &nbsp;&nbsp;{sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
@@ -35,7 +35,7 @@ function SortingComponent(): JSX.Element {
               tabIndex={0}
               onClick={
                 () => {
-                  toggleOpen(false);
+                  setIsOpen(false);
                   dispatch(setSortType(type));
                 }
               }

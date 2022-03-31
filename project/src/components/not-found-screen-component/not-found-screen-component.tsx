@@ -11,7 +11,7 @@ function NotFoundScreenComponent(): JSX.Element {
       <HeaderComponent />
       <main className="page__main">
         <div className="not-found-wrapper">
-          <span className="not-found-text">404</span>
+          <span className="not-found-status">404</span>
           <h1>Page not found</h1>
           <Link to={AppRoute.Main}>Back to main page</Link>
         </div>

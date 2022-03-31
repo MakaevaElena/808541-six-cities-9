@@ -1,4 +1,4 @@
-import FavoritesLocationCardsComponent from '../favorite-location-cards-component/favorite-location-cards-components';
+import FavoriteLocationCardsComponent from '../favorite-location-cards-component/favorite-location-cards-components';
 
 import { FavoriteType } from '../../../types/favorite-type';
 
@@ -25,7 +25,7 @@ function FavoriteListComponent({ favorites }: FavoriteListProps): JSX.Element {
       <ul className="favorites__list">
 
         {Object.keys(favoriteOffersByCities).map((city) => (
-          <FavoritesLocationCardsComponent
+          <FavoriteLocationCardsComponent
             key={city}
             city={city}
             locationOffers={favoriteOffersByCities[city]}

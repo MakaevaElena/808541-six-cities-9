@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import CityListComponent from '../common-components/city-list-component/city-list-component';
 import CardsListComponent from '../common-components/cards-list-component/cards-list-component';
-import EmptyMainScreenComponent from '../main-screen-component/main-empty-screen-component';
+import EmptyMainScreenComponent from './empty-main-screen-component';
 import HeaderComponent from '../common-components/header-component/header-component';
 import MapComponent from '../common-components/map-component/map-component';
 import SortingComponent from '../common-components/sorting-component/sorting-component';
